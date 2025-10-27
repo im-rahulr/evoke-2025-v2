@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Register – ILLUMINA</title>
+  <title>Register – Evoke 2k25</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('../assets/images/backgrounds/Copy of ilumina 25 rules.png');
+      background-image: url('../assets/images/backgrounds/background.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -177,20 +177,20 @@
     })
   </script>
   
-  <meta name="description" content="Register for ILLUMINA at Lowry Adventist College.">
+  <meta name="description" content="Register for Evoke 2k25 at Lowry Adventist College.">
   <!-- Open Graph / WhatsApp / Facebook -->
-  <meta property="og:site_name" content="ILLUMINA">
+  <meta property="og:site_name" content="Evoke 2k25">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Register • ILLUMINA">
-  <meta property="og:description" content="Register your account for ILLUMINA at Lowry Adventist College.">
+  <meta property="og:title" content="Register • Evoke 2k25">
+  <meta property="og:description" content="Register your account for Evoke 2k25 at Lowry Adventist College.">
   <meta property="og:url" content="https://lac-chess.netlify.app/register.html">
   <meta property="og:image" content="https://lac-chess.netlify.app/images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Register • ILLUMINA">
-  <meta name="twitter:description" content="Register for ILLUMINA at Lowry Adventist College.">
+  <meta name="twitter:title" content="Register • Evoke 2k25">
+  <meta name="twitter:description" content="Register for Evoke 2k25 at Lowry Adventist College.">
   <meta name="twitter:image" content="https://lac-chess.netlify.app/images/og-image.jpg">
 </head>
 <body>
@@ -202,7 +202,7 @@
     <header class="event-header">
       <div class="event-info">
         <div class="event-breadcrumb">
-          <a href="../index.html">ILLUMINA</a> <span>/</span> <span>Registration</span>
+          <a href="../index.html">Evoke 2k25</a> <span>/</span> <span>Registration</span>
         </div>
         <h1 class="event-title">Register Now</h1>
         <p class="event-subtitle">Join the Inter-College Cultural Festival</p>
@@ -218,16 +218,16 @@
           <input id="username" name="username" class="input" type="text" placeholder="Your Name" required minlength="2">
         </div>
         <div class="form-group">
-          <label for="course">School</label>
+          <label for="course">Class</label>
           <select id="course" name="course" class="input" required>
-            <option value="" disabled selected>Select school</option>
+            <option value="" disabled selected>select class</option>
             <option value="10th Class">10th Class</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="college">School Name</label>
-          <input id="college" name="college" class="input" type="text" placeholder="Your School Name" required minlength="2">
+          <label for="college">School name</label>
+          <input id="college" name="college" class="input" type="text" placeholder="Your School name" required minlength="2">
         </div>
         <div class="form-group">
           <label for="phone">Phone Number</label>
@@ -266,7 +266,7 @@
 
   <script type="module">
     import { db } from '../assets/js/firebase-config.js';
-    import { collection, doc, setDoc, addDoc, serverTimestamp, getDocs, query, where, limit } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+    import { collection, doc, setDoc, addDoc, serverTimestamp, getDocs, query, where, limit } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
     // Audio: prepare lightweight success chime without any permission prompts
     const AudioCtx = window.AudioContext || window.webkitAudioContext;

@@ -2,7 +2,7 @@
 // Handles common functionality for all individual event admin pages
 
 import { db } from '../../assets/js/firebase-config.js';
-import { collection, getDocs, query, where, onSnapshot, orderBy } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { collection, getDocs, query, where, onSnapshot, orderBy } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
 // Event data from events-list.html
 const EVENTS_DATA = [

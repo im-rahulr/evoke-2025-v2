@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Select Events – ILLUMINA</title>
+  <title>Select Events – Evoke 2k25</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -244,10 +244,10 @@
     <header class="event-header">
       <div class="event-info">
         <div class="event-breadcrumb">
-          <a href="../index.html">ILLUMINA</a> <span>/</span> <span>Select Events</span>
+          <a href="../index.html">EVOKE 2K25</a> <span>/</span> <span>Select Events</span>
         </div>
         <h1 class="event-title">Choose Your Events</h1>
-        <p class="event-subtitle">Select the events you want to participate in (Registration fee: ₹250)</p>
+        <p class="event-subtitle">Select the events you want to participate in (₹100 per event pre-register / ₹150 on-spot)</p>
       </div>
     </header>
 
@@ -285,110 +285,104 @@
 
   <script type="module">
     import { db } from '../assets/js/firebase-config.js';
-    import { collection, doc, setDoc, updateDoc, getDoc, getDocs, query, where, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+    import { collection, doc, setDoc, updateDoc, getDoc, getDocs, query, where, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
     // Event data
     const EVENTS_DATA = [
       {
-        id: 'coding',
-        title: 'Coding (C)',
-        description: 'Solve programming problems in C within the time limit.',
+        id: 'dumb-charades',
+        title: 'Dumb Charades',
+        description: 'Team of 2. Act without speaking; 1 minute per word. 10 prompts, need 8 correct to qualify.',
         maxParticipants: 2
       },
       {
-        id: 'debugging',
-        title: 'Debugging',
-        description: 'Find and fix bugs in given code.',
+        id: 'general-quiz',
+        title: 'G.K. Quiz',
+        description: 'Two per team. Prelims written; finals oral. Includes Aptitude, Current Affairs, Sports, Science and more.',
         maxParticipants: 2
       },
       {
-        id: 'solo-dance',
-        title: 'Solo Dance',
-        description: 'Showcase your dancing skills in individual performance.',
+        id: 'fashion-show',
+        title: 'Fashion Show (Indian Culture)',
+        description: 'Individual. Theme adherence, modest attire, props allowed. 30s on stage.',
+        maxParticipants: 1
+      },
+      {
+        id: 'group-song',
+        title: 'Group Song',
+        description: '3–5 members. Max 4 mins. Any language; judged on vocals, musicality, presence and style.',
+        maxParticipants: 5
+      },
+      {
+        id: 'solo-singing',
+        title: 'Solo Song',
+        description: 'Individual. Max 2 mins. Any language; decent content. Own track/karaoke allowed.',
         maxParticipants: 1
       },
       {
         id: 'group-dance',
         title: 'Group Dance',
-        description: 'Team dance performance with choreography.',
-        maxParticipants: 8
+        description: '2–5 members. Theme: Cinematic. 3+1 mins; fusion allowed; no religious acts.',
+        maxParticipants: 5
       },
       {
-        id: 'solo-singing',
-        title: 'Solo Singing',
-        description: 'Individual singing performance showcasing vocal talent.',
+        id: 'solo-dance',
+        title: 'Solo Dance',
+        description: 'Individual. 4 mins. Free Style. Fusion allowed. No religious acts; decent performance.',
         maxParticipants: 1
       },
       {
         id: 'solo-instrumental',
-        title: 'Solo Instrumental',
-        description: 'Individual instrumental music performance.',
-        maxParticipants: 1
-      },
-      {
-        id: 'photography',
-        title: 'Photography',
-        description: 'Capture the best moments and showcase photography skills.',
+        title: 'Instrumental Music',
+        description: 'Individual. Bring your own instruments. Time limit 3 minutes.',
         maxParticipants: 1
       },
       {
         id: 'face-painting',
         title: 'Face Painting',
-        description: 'Creative face painting competition with artistic designs.',
-        maxParticipants: 1
-      },
-      {
-        id: 'reels-creation',
-        title: 'Reels Creation',
-        description: 'Create engaging short video content and reels.',
-        maxParticipants: 3
-      },
-      {
-        id: 'general-quiz',
-        title: 'General Quiz',
-        description: 'Test your general knowledge in quiz competition.',
+        description: 'Team of 2 (one paints on the other). Time limit 1 hour. Free Theme.',
         maxParticipants: 2
-      },
-      {
-        id: 'hindi-essay',
-        title: 'Hindi Essay',
-        description: 'Write compelling essays in Hindi on given topics.',
-        maxParticipants: 1
-      },
-      {
-        id: 'kannada-essay',
-        title: 'Kannada Essay',
-        description: 'Write compelling essays in Kannada on given topics.',
-        maxParticipants: 1
       },
       {
         id: 'fireless-cooking',
-        title: 'Fireless Cooking',
-        description: 'Prepare delicious dishes without using fire or heat.',
+        title: 'Cooking Without Fire',
+        description: 'Individual. 1½ hours. No fire; own utensils; no precooked items; creativity judged.',
+        maxParticipants: 1
+      },
+      {
+        id: 'vegetable-carving',
+        title: 'Vegetable Carving',
+        description: 'Individual. 1 hour. Bring own veggies and tools; follow given theme.',
+        maxParticipants: 1
+      },
+      {
+        id: 'pot-painting',
+        title: 'Pot Painting',
+        description: 'Pot provided. 1 hour. Only hand painting; bring materials; no spray paint.',
+        maxParticipants: 1
+      },
+      {
+        id: 'art-craft',
+        title: 'Art and Craft',
+        description: 'Individual. Bring own materials and tools. Time: 1 hour. Original work only.',
+        maxParticipants: 1
+      },
+      {
+        id: 'collage-competition',
+        title: 'Collage Competition',
+        description: 'Team of ≥2. Theme on the spot. Time 1 hour. Charts provided. Handmade only.',
         maxParticipants: 2
       },
       {
-        id: 'product-launch',
-        title: 'Product Launch',
-        description: 'Present and launch your innovative product idea.',
-        maxParticipants: 3
-      },
-      {
-        id: 'best-manager',
-        title: 'Best Manager',
-        description: 'Demonstrate your management and leadership skills.',
+        id: 'pencil-sketch',
+        title: 'Pencil Sketch',
+        description: 'Individual. Theme on the spot. Papers provided. Graphite/charcoal only.',
         maxParticipants: 1
       },
       {
-        id: 'red-carpet',
-        title: 'Red Carpet',
-        description: 'Fashion show and modeling competition.',
-        maxParticipants: 1
-      },
-      {
-        id: 'elocution',
-        title: 'Elocution',
-        description: 'One member per college. Max 3 minutes. Topic: The Impact of Social Media on Indian Youth Mental Health. Judges\' decision will be final.',
+        id: 'best-waste',
+        title: 'Best Out of Waste',
+        description: 'Individual. 1½ hours. Only waste/recyclable materials; eco-friendly models.',
         maxParticipants: 1
       }
     ];
@@ -493,6 +487,7 @@
 
     // Toggle event selection
     function toggleEventSelection(eventId) {
+      console.log('Toggling event:', eventId);
       const eventCard = document.querySelector(`[data-event-id="${eventId}"]`);
       const selectBtn = eventCard.querySelector('.select-btn');
       
@@ -510,6 +505,7 @@
         selectBtn.textContent = 'Unselect';
       }
       
+      console.log('Current selected events:', selectedEvents);
       updateSelectionSummary();
     }
 
@@ -543,17 +539,23 @@
 
     // Proceed to payment
     async function proceedToPayment() {
+      console.log('Submit button clicked!');
+      console.log('Selected events:', selectedEvents);
+      
       if (Object.keys(selectedEvents).length === 0) {
+        console.warn('No events selected');
         alert('Please select at least one event.');
         return;
       }
 
       if (!userContext) {
+        console.warn('No user context found');
         alert('User session expired. Please register again.');
         window.location.href = 'register.html';
         return;
       }
 
+      console.log('User context:', userContext);
       showLoader('Saving your event selections...');
 
       try {
@@ -571,9 +573,12 @@
           });
         });
 
+        console.log('Event selections prepared:', eventSelections);
+
         // Find user by shortId
         const registrationsRef = collection(db, 'registrations');
         const querySnapshot = await getDocs(query(registrationsRef, where('shortId', '==', userContext.token)));
+        console.log('Query snapshot:', querySnapshot);
 
         if (querySnapshot.empty) {
           throw new Error('User registration not found. Please register again.');
@@ -581,40 +586,50 @@
 
         // Use the first matching document
         const userDocData = querySnapshot.docs[0];
+        console.log('User document found:', userDocData.id);
+
+        // Calculate total amount: ₹100 per event
+        const totalAmount = Object.keys(selectedEvents).length * 100;
+        console.log('Total amount calculated:', totalAmount);
 
         // Persist selections in eventSelections (rules allow create here)
         const eventSelectionsRef = collection(db, 'eventSelections');
-        const selectionDocRef = doc(eventSelectionsRef);
+        const selectionDocRef = doc(eventSelectionsRef, `${userContext.token}_${Date.now()}`);
+        console.log('Creating selection document:', selectionDocRef.id);
         await setDoc(selectionDocRef, {
           userId: userDocData.id,
           userToken: userContext.token,
           selections: eventSelections,
-          totalAmount: 250,
+          totalAmount: totalAmount,
           createdAt: serverTimestamp(),
           updatedAt: serverTimestamp(),
           paymentStatus: 'pending'
         });
+        console.log('Selection document created successfully');
 
         // Best-effort: link selection to registration (ignore if denied by rules)
         try {
+          console.log('Attempting to update registration document');
           await updateDoc(userDocData.ref, {
             hasSelectedEvents: true,
             eventSelectionId: selectionDocRef.id,
             eventSelectionTimestamp: serverTimestamp(),
-            totalAmount: 250
+            totalAmount: totalAmount
           });
+          console.log('Registration document updated successfully');
         } catch (linkErr) {
           console.warn('Linking selection to registration was skipped due to rules:', linkErr?.message || linkErr);
         }
 
         // Store selections in session storage for payment page
         sessionStorage.setItem('eventSelections', JSON.stringify(eventSelections));
-        sessionStorage.setItem('totalAmount', '250'); // Fixed amount
+        sessionStorage.setItem('totalAmount', String(totalAmount));
         sessionStorage.setItem('payment_user_context', JSON.stringify({
           name: userContext.name,
           token: userContext.token,
           college: userContext.college
         }));
+        console.log('Session storage updated');
 
         hideLoader();
 
@@ -625,6 +640,7 @@
         } catch (e) { console.warn('Failed to set submission lock:', e); }
 
         // Redirect to final step page
+        console.log('Redirecting to success page');
         window.location.href = 'success.html';
 
       } catch (error) {
@@ -634,12 +650,14 @@
           stack: error?.stack
         });
         hideLoader();
-        alert('Failed to save event selections. Please try again.');
+        alert('Failed to save event selections. Please try again. Error: ' + (error?.message || 'Unknown error'));
       }
     }
 
     // Initialize page
     function init() {
+      console.log('Initializing events page...');
+      
       // If already submitted, redirect to success immediately
       if (enforceSubmissionLock()) return;
 
@@ -647,7 +665,13 @@
       renderEvents();
       
       // Add proceed button handler
-      proceedBtn.addEventListener('click', proceedToPayment);
+      if (proceedBtn) {
+        console.log('Submit button found, adding click handler');
+        proceedBtn.addEventListener('click', proceedToPayment);
+        console.log('Click handler attached successfully');
+      } else {
+        console.error('Submit button not found!');
+      }
 
       // Handle back-forward cache returns: re-check lock and redirect if needed
       window.addEventListener('pageshow', () => {
@@ -655,8 +679,21 @@
       });
     }
 
+    // Global error handler
+    window.addEventListener('error', (e) => {
+      console.error('Global error:', e.error);
+      console.error('Error message:', e.message);
+      console.error('Error filename:', e.filename);
+      console.error('Error line:', e.lineno);
+    });
+
     // Start the application
-    init();
+    try {
+      init();
+    } catch (e) {
+      console.error('Failed to initialize:', e);
+      alert('Failed to load page. Please refresh and try again.');
+    }
   </script>
 </body>
 </html>

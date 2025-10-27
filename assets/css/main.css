@@ -38,19 +38,25 @@ body {
   /* Star Falling Animation */
   /* Hide scrollbar on mobile for better performance */
   @media (max-width: 768px) {
-    overflow-y: hidden;
-*::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  height: 0;
-  background: transparent;
-}
+    overflow-y: auto;
+    /* Improve touch scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent zoom on double tap */
+    touch-action: pan-y;
+  }
 
-/* Additional scrollbar hiding for all elements */
-* {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
+  *::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+
+  /* Additional scrollbar hiding for all elements */
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
 
 body {
   margin: 0;
@@ -61,6 +67,11 @@ body {
   background: var(--bg);
   color: var(--text);
   padding-bottom: env(safe-area-inset-bottom);
+  /* Ensure proper scrolling on mobile */
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
 }
 
 /* When announcement banner is visible, push content down */
@@ -167,6 +178,8 @@ body.with-banner {
   box-sizing: border-box;
   overflow-x: hidden;
   padding-top: 40px;
+  /* Ensure container doesn't interfere with scrolling */
+  height: auto;
 }
 
 body.with-banner .container {
@@ -766,7 +779,7 @@ body.home-page .event-card {
 
 /* Home page background like event pages */
 body.home-page {
-  --home-bg: url("../images/backgrounds/Copy of ilumina 25 rules.png");
+  --home-bg: url("../images/backgrounds/background.png");
 }
 
 body.home-page::before {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QR Code – ILLUMINA 2K25</title>
+  <title>QR Code – Evoke 2k25</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -180,7 +180,8 @@
     }
   </style>
 </head>
-<body>
+<body style="background-image: url('../assets/images/backgrounds/background.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; position: relative;">
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(2px); z-index: -1;"></div>
   <main class="qr-container">
     <a href="javascript:history.back()" class="back-link">
       ← Back
@@ -188,7 +189,7 @@
 
     <header class="qr-header">
       <h1 class="qr-title">Your QR Code</h1>
-      <p class="qr-subtitle">ILLUMINA 2K25 Registration</p>
+      <p class="qr-subtitle">Evoke 2k25 Registration</p>
     </header>
 
     <div class="token-display">
@@ -255,7 +256,7 @@
         </div>
         <div class="user-info-item">
           <span class="user-info-label">Event:</span>
-          <span class="user-info-value">ILLUMINA 2K25</span>
+          <span class="user-info-value">Evoke 2k25</span>
         </div>
         <div class="user-info-item">
           <span class="user-info-label">Date:</span>
@@ -281,10 +282,10 @@
         
         // Create verification payload
         const payload = JSON.stringify({
-          type: 'ILLUMINA_ticket',
+          type: 'Evoke 2k25_ticket',
           token: tokenNo,
           name: userName,
-          event: 'ILLUMINA 2K25',
+          event: 'Evoke 2k25',
           date: 'September 25, 2025',
           venue: 'Lowry Adventist College, Bangalore',
           ts: Date.now()

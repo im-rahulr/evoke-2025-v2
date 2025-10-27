@@ -191,7 +191,7 @@ async function runDiagnostics() {
   add('Firebase Connection', async () => {
     try {
       const { db } = await import('../../assets/js/firebase-config.js');
-      const { collection, getDocs, limit, query } = await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js");
+      const { collection, getDocs, limit, query } = await import("https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js");
       const testQuery = query(collection(db, 'registrations'), limit(1));
       await getDocs(testQuery);
       pass('Firebase Connection');

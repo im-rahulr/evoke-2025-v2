@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Online Payment – ILLUMINA</title>
+  <title>Online Payment – Evoke 2k25</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -447,17 +447,17 @@
         </div>
       </div>
       <div class="whatsapp-actions">
-        <button class="whatsapp-action" data-message="Hi! I'm having trouble with UPI payment for ILLUMINA">
+        <button class="whatsapp-action" data-message="Hi! I'm having trouble with UPI payment for Evoke 2k25">
           🔄 UPI Payment Issue
         </button>
         <button class="whatsapp-action"
-          data-message="Hello! My payment was successful but I need confirmation for ILLUMINA">
+          data-message="Hello! My payment was successful but I need confirmation for Evoke 2k25">
           ✅ Payment Confirmation
         </button>
-        <button class="whatsapp-action" data-message="Hi! I need help with QR code scanning for ILLUMINA payment">
+        <button class="whatsapp-action" data-message="Hi! I need help with QR code scanning for Evoke 2k25 payment">
           📱 QR Code Help
         </button>
-        <button class="whatsapp-action" data-message="Hello! I need general payment support for ILLUMINA">
+        <button class="whatsapp-action" data-message="Hello! I need general payment support for Evoke 2k25">
           💬 General Payment Help
         </button>
       </div>
@@ -494,7 +494,7 @@
       id: '8050816937@ibl',
       amount: '250',
       merchantName: 'MADHAVI',
-      transactionNote: 'ILLUMINA Registration Fee',
+      transactionNote: 'Evoke 2k25 Registration Fee',
       whatsappNumber: '7349321463'
     };
 
@@ -508,7 +508,7 @@
         if (titleEl) titleEl.textContent = `Pay ₹${totalAmount}`;
         // Update transaction note using user context
         const userContext = getUserContext();
-        UPI_CONFIG.transactionNote = `Token ${userContext?.token || 'N/A'} ILLUMINA Registration`;
+        UPI_CONFIG.transactionNote = `Token ${userContext?.token || 'N/A'} Evoke 2k25 Registration`;
       } catch (e) {
         console.warn('Unable to initialize payment amount:', e);
       }
@@ -595,7 +595,7 @@
 
       // Get user context for transaction note
       const userContext = getUserContext();
-      let transactionNote = `Token ${userContext?.token || 'N/A'} ILLUMINA Lowry College`;
+      let transactionNote = `Token ${userContext?.token || 'N/A'} Evoke 2k25 Lowry College`;
 
       const params = new URLSearchParams({
         pa: '8050816937@ibl',
@@ -687,7 +687,7 @@
       let message = 'hello';
 
       if (userContext) {
-        message = `Hello! I have completed payment for ILLUMINA registration.
+        message = `Hello! I have completed payment for Evoke 2k25 registration.
         
 Details:
 • Name: ${userContext.name}
@@ -911,7 +911,7 @@ Please confirm my payment status.`;
             8050816937@ybl
           </div>
           <strong>Amount:</strong> ₹${UPI_CONFIG.amount}<br>
-          <strong>Note:</strong> Token ${getUserContext()?.token || 'N/A'} ILLUMINA
+          <strong>Note:</strong> Token ${getUserContext()?.token || 'N/A'} Evoke 2k25
         </div>
         <div style="margin-bottom: 16px;">
           <strong>Option 2:</strong> Try opening UPI link again
@@ -1325,7 +1325,7 @@ Please confirm my payment status.`;
     function contactSupportWithError(errorId, errorMessage) {
       const userContext = getUserContext();
 
-      let supportMessage = `Hello! I'm experiencing a payment issue on ILLUMINA registration.
+      let supportMessage = `Hello! I'm experiencing a payment issue on Evoke 2k25 registration.
 
 Error Details:
 • Error ID: ${errorId}
@@ -1369,7 +1369,7 @@ Please help me resolve this issue.`;
       try {
         // Import Firebase functions
         const { db } = await import('../assets/js/firebase-config.js');
-        const { collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js");
+        const { collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js");
 
         const errorData = {
           errorId: errorId,
@@ -1453,7 +1453,7 @@ Please help me resolve this issue.`;
 
         // Import Firebase functions
         const { db } = await import('../assets/js/firebase-config.js');
-        const { collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js");
+        const { collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js");
 
         const paymentData = {
           userToken: userContext.token,

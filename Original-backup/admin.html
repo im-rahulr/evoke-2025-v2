@@ -100,8 +100,8 @@
 
     .charts {
       display: grid !important;
-      grid-template-columns: repeat(4, 1fr) !important;
-      gap: 16px !important;
+      grid-template-columns: 2fr 1fr !important;
+      gap: 20px !important;
       margin: 16px 0 24px !important;
     }
 
@@ -111,7 +111,7 @@
 
     @media (max-width: 1200px) {
       .charts {
-        grid-template-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr !important;
       }
     }
 
@@ -326,8 +326,6 @@
       <div class="charts">
         <div class="chart-card"><canvas id="byDay"></canvas></div>
         <div class="chart-card"><canvas id="byCourse"></canvas></div>
-        <div class="chart-card"><canvas id="byCollege"></canvas></div>
-        <div class="chart-card"><canvas id="byCoursePct"></canvas></div>
       </div>
       <div class="table-wrap">
         <div id="tableLoading" class="loading-overlay">
@@ -955,14 +953,12 @@
       if (window.__lastAllRows) renderWithFilters(window.__lastAllRows);
     });
 
-    let __courseChart = null, __yearChart = null, __coursePctChart = null;
+    let __courseChart = null;
     let __byDayChart = null;
     async function renderCharts(byCourse, byCollege) {
       const { Chart } = await import('https://cdn.jsdelivr.net/npm/chart.js@4.4.3/auto/+esm');
       const bd = document.getElementById('byDay');
       const cc = document.getElementById('byCourse');
-      const cy = document.getElementById('byCollege');
-      const cp = document.getElementById('byCoursePct');
       // Color palettes
       const courseColorMap = {
         'PUC / 12th / ISC / CBSE': '#4dabf7',

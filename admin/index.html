@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin – illumina</title>
+  <title>Admin – Evoke 2k25</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -12,15 +12,46 @@
   <link rel="stylesheet" href="assets/css/admin.css?v=20240916">
   <style>
     /* Critical admin styles - inline fallback */
-    /* Hide admin panel initially */
-    .admin-panel {
+    /* Hide admin panel initially - STRICT */
+    .admin-panel,
+    #admin-panel,
+    .toolbar,
+    .filters,
+    .charts,
+    .table-wrap,
+    #ticketVerificationSection,
+    #errorLogSection {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
     }
 
     /* Show admin panel only when logged in */
-    .admin-container.is-logged-in .admin-panel {
+    .admin-container.is-logged-in .admin-panel,
+    .admin-container.is-logged-in #admin-panel {
       display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
       width: 100% !important;
+    }
+
+    .admin-container.is-logged-in .toolbar,
+    .admin-container.is-logged-in .filters {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .admin-container.is-logged-in .charts {
+      display: grid !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .admin-container.is-logged-in .table-wrap {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
 
     .admin-container.is-logged-in {
@@ -35,17 +66,25 @@
       display: none !important;
     }
 
+    /* Ensure title is always visible */
+    .title {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
     .toolbar {
       display: flex !important;
       justify-content: space-between !important;
       align-items: center !important;
       flex-wrap: wrap !important;
-      gap: 12px !important;
+      gap: 16px !important;
       margin: 20px 0 16px !important;
-      padding: 16px !important;
-      background: var(--surface) !important;
+      padding: 20px !important;
+      background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%) !important;
       border: 1px solid var(--line) !important;
       border-radius: 12px !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     }
 
     .toolbar .meta {
@@ -53,19 +92,42 @@
       align-items: center !important;
       gap: 12px !important;
       margin: 0 !important;
+      flex-wrap: wrap !important;
     }
 
     .toolbar .actions {
       display: flex !important;
       gap: 8px !important;
       flex-wrap: wrap !important;
+      align-items: center !important;
     }
 
     .toolbar .actions .btn {
       width: auto !important;
-      padding: 8px 16px !important;
+      padding: 10px 18px !important;
       white-space: nowrap !important;
       font-size: 14px !important;
+      font-weight: 500 !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .toolbar .actions .btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 8px rgba(123, 191, 68, 0.3) !important;
+    }
+
+    .toolbar .actions .input {
+      padding: 10px 16px !important;
+      background: var(--surface) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 8px !important;
+      color: var(--text) !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .toolbar .actions .input:focus {
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 3px rgba(123, 191, 68, 0.1) !important;
     }
 
     .admin-note {
@@ -78,36 +140,147 @@
       color: var(--text) !important;
     }
 
+    .stat-badge {
+      background: linear-gradient(135deg, var(--primary) 0%, #6ba83a 100%) !important;
+      color: white !important;
+      padding: 8px 16px !important;
+      border-radius: 20px !important;
+      font-weight: 600 !important;
+      box-shadow: 0 2px 8px rgba(123, 191, 68, 0.3) !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .stat-badge:hover {
+      transform: scale(1.05) !important;
+      box-shadow: 0 4px 12px rgba(123, 191, 68, 0.4) !important;
+    }
+
+    .status-indicator {
+      padding: 6px 12px !important;
+      border-radius: 16px !important;
+      font-size: 12px !important;
+      font-weight: 500 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+    }
+
+    .status-indicator.loading {
+      background: rgba(255, 193, 7, 0.2) !important;
+      color: #ffc107 !important;
+      border: 1px solid rgba(255, 193, 7, 0.3) !important;
+    }
+
+    .status-indicator.connected {
+      background: rgba(40, 167, 69, 0.2) !important;
+      color: #28a745 !important;
+      border: 1px solid rgba(40, 167, 69, 0.3) !important;
+    }
+
+    .status-indicator.error {
+      background: rgba(220, 53, 69, 0.2) !important;
+      color: #dc3545 !important;
+      border: 1px solid rgba(220, 53, 69, 0.3) !important;
+    }
+
+    .live {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 6px 12px !important;
+      background: rgba(40, 167, 69, 0.1) !important;
+      border: 1px solid rgba(40, 167, 69, 0.3) !important;
+      border-radius: 16px !important;
+      font-size: 12px !important;
+      font-weight: 500 !important;
+      color: #28a745 !important;
+    }
+
+    .live-dot {
+      width: 8px !important;
+      height: 8px !important;
+      background: #28a745 !important;
+      border-radius: 50% !important;
+      animation: pulse 2s ease-in-out infinite !important;
+    }
+
+    .live-dot.on {
+      animation: pulse 2s ease-in-out infinite !important;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.9); }
+    }
+
     .filters {
       display: flex !important;
       gap: 12px !important;
       align-items: center !important;
       flex-wrap: wrap !important;
       margin: 16px 0 !important;
-      padding: 16px !important;
-      background: var(--surface) !important;
+      padding: 16px 20px !important;
+      background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%) !important;
       border: 1px solid var(--line) !important;
-      border-radius: 8px !important;
+      border-radius: 12px !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
     }
 
     .filters .input {
       width: auto !important;
-      min-width: 120px !important;
+      min-width: 180px !important;
+      padding: 10px 16px !important;
+      background: var(--surface) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 8px !important;
+      color: var(--text) !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .filters .input:focus {
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 3px rgba(123, 191, 68, 0.1) !important;
     }
 
     .filters .stat-badge {
       margin-right: 16px !important;
     }
 
+    .filters label {
+      color: var(--text-muted) !important;
+      font-weight: 500 !important;
+      font-size: 13px !important;
+    }
+
     .charts {
       display: grid !important;
-      grid-template-columns: repeat(4, 1fr) !important;
-      gap: 16px !important;
-      margin: 16px 0 24px !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 20px !important;
+      margin: 20px 0 24px !important;
+    }
+
+    .chart-card {
+      background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%) !important;
+      border: 1px solid var(--line) !important;
+      border-radius: 12px !important;
+      padding: 20px !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .chart-card:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 8px 20px rgba(123, 191, 68, 0.2) !important;
+      border-color: var(--primary) !important;
     }
 
     .table-wrap {
-      margin-top: 16px !important;
+      margin-top: 20px !important;
+      background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%) !important;
+      border: 1px solid var(--line) !important;
+      border-radius: 12px !important;
+      padding: 20px !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+      position: relative !important;
     }
 
     @media (max-width: 1200px) {
@@ -173,20 +346,20 @@
       box-shadow: 0 4px 12px rgba(123, 191, 68, 0.4);
     }
   </style>
-  <meta name="description" content="Admin panel for illumina registrations.">
+  <meta name="description" content="Admin panel for Evoke 2k25 registrations.">
   <!-- Open Graph / WhatsApp / Facebook -->
-  <meta property="og:site_name" content="illumina">
+  <meta property="og:site_name" content="Evoke 2k25">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Admin • illumina">
-  <meta property="og:description" content="Admin panel for illumina registrations.">
+  <meta property="og:title" content="Admin • Evoke 2k25">
+  <meta property="og:description" content="Admin panel for Evoke 2k25 registrations.">
   <meta property="og:url" content="https://lac-chess.netlify.app/admin.html">
   <meta property="og:image" content="https://lac-chess.netlify.app/images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Admin • illumina">
-  <meta name="twitter:description" content="Admin panel for illumina registrations.">
+  <meta name="twitter:title" content="Admin • Evoke 2k25">
+  <meta name="twitter:description" content="Admin panel for Evoke 2k25 registrations.">
   <meta name="twitter:image" content="https://lac-chess.netlify.app/images/og-image.jpg">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0TXQST3MG"></script>
@@ -212,11 +385,6 @@
     <div class="spinner-standalone" aria-hidden="true"></div>
     <div id="pageLoaderText" class="loader-text">Loading…</div>
   </div>
-  <!-- <div id="siteBanner" class="site-banner" role="region" aria-label="Announcement" style="display:none">
-    <span><strong>New trial is out</strong> — follow updates at</span>
-    <a href="https://www.instagram.com/lac_cultural_department/" target="_blank" rel="noopener">@lac_cultural_department</a>
-    <button id="closeBanner" class="banner-close" aria-label="Close announcement">×</button>
-  </div> -->
   <main class="container admin-container" role="main">
     <h1 class="title">Admin</h1>
 
@@ -240,24 +408,35 @@
     <section id="admin-panel" class="admin-panel" style="display:none; width:100%;">
       <div class="toolbar">
         <div class="meta">
-          Registrations
+          <h2 style="margin: 0; font-size: 18px;">Registrations</h2>
           <span class="live"><span id="liveDot" class="live-dot"></span>Live</span>
           <span id="statusIndicator" class="status-indicator">Connecting...</span>
-          <span id="totalBadge" class="stat-badge" style="font-size:20px; padding:10px 14px; margin-left:8px;">Total: 0</span>
+          <span id="totalBadge" class="stat-badge" style="font-size:18px; padding:8px 12px; margin-left:8px;">Total: 0</span>
         </div>
-        <div class="actions">
-          <button id="openQuickSearch" class="btn btn-primary">Quick Search (Ctrl+K)</button>
-          <input id="searchBox" class="input search" placeholder="Search name, Token No, IP..." />
-          <button id="exportCsv" class="btn btn-dark">Export CSV</button>
-          <button id="debugIds" class="btn btn-secondary">Debug IDs</button>
-          <button id="debugEvents" class="btn btn-secondary">Debug Events</button>
-          <button id="refreshEvents" class="btn btn-secondary">Refresh Events</button>
-          <button id="showErrors" class="btn btn-secondary">Error Log <span id="errorCount" class="badge"
+        <div class="actions" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <button id="openQuickSearch" class="btn btn-primary">🔍 Quick Search</button>
+          <input id="searchBox" class="input search" placeholder="Search name, Token No, IP..." style="min-width: 200px;" />
+          <button id="refreshData" class="btn btn-primary">🔄 Refresh</button>
+          <button id="exportCsv" class="btn btn-dark">📥 Export CSV</button>
+          <button id="showErrors" class="btn btn-secondary">⚠️ Errors <span id="errorCount" class="badge"
               aria-label="unread errors">0</span></button>
-          <button id="runTests" class="btn btn-secondary">Run Tests</button>
-          <button id="refreshData" class="btn btn-primary">Refresh</button>
-          <button id="logoutBtn" class="btn btn-secondary">Logout</button>
-          <a href="deleted-users.html" class="btn btn-dark" style="text-decoration:none;">🗑️ Deleted Users</a>
+          <a href="deleted-users.html" class="btn btn-dark" style="text-decoration:none;">🗑️ Deleted</a>
+          <button id="logoutBtn" class="btn btn-secondary">🚪 Logout</button>
+        </div>
+      </div>
+      
+      <!-- Advanced Tools Section (Collapsible) -->
+      <div style="margin: 16px 0;">
+        <button id="toggleAdvancedTools" class="btn btn-secondary" style="width: 100%;">
+          ⚙️ Advanced Tools <span id="advancedToolsIcon">▼</span>
+        </button>
+        <div id="advancedToolsPanel" style="display: none; margin-top: 12px; padding: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px;">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button id="debugIds" class="btn btn-secondary">🔍 Debug IDs</button>
+            <button id="debugEvents" class="btn btn-secondary">🎯 Debug Events</button>
+            <button id="refreshEvents" class="btn btn-secondary">🔄 Refresh Events</button>
+            <button id="runTests" class="btn btn-secondary">🧪 Run Tests</button>
+          </div>
         </div>
       </div>
       <!-- Note removed as requested -->
@@ -314,7 +493,7 @@
         <div id="dbErrorContent" class="error-log-content" style="display:none;"></div>
       </div>
       <div class="filters">
-        <label class="helper">School</label>
+        <label class="helper">Class</label>
         <select id="filterCourse" class="input">
           <option value="">All</option>
           <option>10th Class</option>
@@ -326,7 +505,6 @@
         <div class="chart-card"><canvas id="byDay"></canvas></div>
         <div class="chart-card"><canvas id="byCourse"></canvas></div>
         <div class="chart-card"><canvas id="byCollege"></canvas></div>
-        <div class="chart-card"><canvas id="byCoursePct"></canvas></div>
       </div>
       <div class="table-wrap">
         <div id="tableLoading" class="loading-overlay">
@@ -338,10 +516,10 @@
               <th>#</th>
               <th>Username</th>
               <th>Phone</th>
-              <th>School</th>
+              <th>Class</th>
               <th>Events</th>
               <th>Payment</th>
-              <th>School Name</th>
+              <th>School name</th>
               <th>IP</th>
               <th>Token No</th>
               <th>Created</th>
@@ -378,7 +556,7 @@
       if (FB.loaded) return FB;
       try {
         const cfg = await import('../assets/js/firebase-config.js');
-        const fs = await import('https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js');
+        const fs = await import('https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js');
         FB.db = cfg.db;
         FB.collection = fs.collection;
         FB.getDocs = fs.getDocs;
@@ -510,22 +688,6 @@
         errorLog.addError('EVENT_SEL_INIT_ERROR', 'Could not initialize eventSelections listener', e);
       }
     }
-
-    // Announcement banner logic
-    try {
-      const banner = document.getElementById('siteBanner');
-      if (banner) {
-        banner.style.display = 'flex';
-        document.body.classList.add('with-banner');
-        const h = banner.getBoundingClientRect().height;
-        document.documentElement.style.setProperty('--banner-h', h + 'px');
-        const btn = document.getElementById('closeBanner');
-        if (btn) btn.addEventListener('click', () => {
-          banner.style.display = 'none';
-          document.body.classList.remove('with-banner');
-        });
-      }
-    } catch { }
 
     const loginForm = document.getElementById('admin-login');
     const panel = document.getElementById('admin-panel');
@@ -676,6 +838,21 @@
       }
     });
 
+    // Toggle advanced tools panel
+    const toggleAdvancedTools = document.getElementById('toggleAdvancedTools');
+    const advancedToolsPanel = document.getElementById('advancedToolsPanel');
+    const advancedToolsIcon = document.getElementById('advancedToolsIcon');
+    
+    if (toggleAdvancedTools && advancedToolsPanel) {
+      toggleAdvancedTools.addEventListener('click', () => {
+        const isHidden = advancedToolsPanel.style.display === 'none';
+        advancedToolsPanel.style.display = isHidden ? 'block' : 'none';
+        if (advancedToolsIcon) {
+          advancedToolsIcon.textContent = isHidden ? '▲' : '▼';
+        }
+      });
+    }
+
     // Toggle ticket verification section
     const verificationSection = document.getElementById('ticketVerificationSection');
     const showVerificationToggle = document.getElementById('showVerificationToggle');
@@ -795,7 +972,7 @@
       loadDbErrors: async function () {
         try {
           await ensureFirebase();
-          const q = FB.query(FB.collection(FB.db, 'errorLogs'), FB.orderBy('timestamp', 'desc'), FB.limit(100));
+          const q = FB.query(FB.collection(FB.db, 'errorLogs'), FB.orderBy('timestamp', 'desc'));
           const snap = await FB.getDocs(q);
           this.dbErrors = [];
           snap.forEach(doc => {
@@ -1150,14 +1327,13 @@
       if (window.__lastAllRows) renderWithFilters(window.__lastAllRows);
     });
 
-    let __courseChart = null, __yearChart = null, __coursePctChart = null;
+    let __courseChart = null, __yearChart = null;
     let __byDayChart = null;
     async function renderCharts(byCourse, byEvents) {
       const { Chart } = await import('https://cdn.jsdelivr.net/npm/chart.js@4.4.3/auto/+esm');
       const bd = document.getElementById('byDay');
       const cc = document.getElementById('byCourse');
       const cy = document.getElementById('byCollege');
-      const cp = document.getElementById('byCoursePct');
       // Color palettes
       const courseColorMap = {
         'PUC / 12th / ISC / CBSE': '#4dabf7',
@@ -1264,37 +1440,6 @@
       if (__yearChart) __yearChart.destroy();
       cy.parentElement.style.height = '320px';
       __yearChart = new Chart(cy, eventsConfig);
-
-      // Percentage by course
-      const totalCount = (byCourse['PUC / 12th / ISC / CBSE'] || 0) + (byCourse['Degree / UG'] || 0) + (byCourse['PG'] || 0);
-      const pctData = totalCount > 0 ? [byCourse['PUC / 12th / ISC / CBSE'] || 0, byCourse['Degree / UG'] || 0, byCourse['PG'] || 0] : [0, 0, 0];
-      const pctColors = ['#4dabf7', '#845ef7', '#ffa94d'];
-      const pctConfig = {
-        type: 'pie',
-        data: {
-          labels: ['PUC / 12th / ISC / CBSE', 'Degree / UG', 'PG'],
-          datasets: [{ data: pctData, backgroundColor: pctColors, borderColor: '#1f1f1f', borderWidth: 2 }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: true, position: 'bottom', labels: { color: '#fff', usePointStyle: true } },
-            tooltip: {
-              callbacks: {
-                label: (ctx) => {
-                  const value = ctx.parsed || 0;
-                  const pct = totalCount ? ((value / totalCount) * 100).toFixed(1) : '0.0';
-                  return `${ctx.label}: ${value} (${pct}%)`;
-                }
-              }
-            }
-          }
-        }
-      };
-      if (__coursePctChart) __coursePctChart.destroy();
-      cp.parentElement.style.height = '320px';
-      __coursePctChart = new Chart(cp, pctConfig);
     }
 
     document.getElementById('exportCsv').addEventListener('click', async () => {
@@ -1367,7 +1512,7 @@
         const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = `illumina-registrations-${new Date().toISOString().split('T')[0]}.csv`;
+        a.download = `Evoke 2k25-registrations-${new Date().toISOString().split('T')[0]}.csv`;
         a.click();
         URL.revokeObjectURL(a.href);
 
