@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coding (C) Admin – ILLUMINA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=20240916">
+  <link rel="stylesheet" href="event-admin.css?v=1">
+  <meta name="description" content="Coding event admin panel for ILLUMINA registrations.">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0TXQST3MG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-Y0TXQST3MG');
+  </script>
+</head>
+
+  <div id="pageLoader" class="page-loader" aria-live="polite" aria-busy="true">
+    <div class="spinner-standalone" aria-hidden="true"></div>
+    <div id="pageLoaderText" class="loader-text">Loading participants...</div>
+  </div>
+
+  <!-- Enhanced Login Form -->
+  <div id="loginContainer" class="login-container" style="display: none; max-width: 480px; margin: 80px auto 120px; padding: 0 20px;">
+    <div class="form-card" style="background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 32px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); backdrop-filter: blur(10px);">
+      <div style="text-align: center; margin-bottom: 32px;">
+        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary), #90d15b); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 20px rgba(123, 191, 68, 0.3);">
+          <span style="font-size: 32px;">💻</span>
+        </div>
+        <h1 class="title" style="margin: 0; font-size: 28px; background: linear-gradient(135deg, #fff, #f0f0f0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Event Admin Access</h1>
+        <p style="color: rgba(255, 255, 255, 0.7); margin: 8px 0 0; font-size: 16px;">Secure access to Coding event management</p>
+      </div>
+
+      <form id="loginForm" style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="form-group" style="position: relative;">
+          <label for="password" style="display: block; margin-bottom: 8px; color: rgba(255, 255, 255, 0.9); font-weight: 600; font-size: 14px;">
+            🔐 Access Password
+          </label>
+          <div style="position: relative;">
+            <input
+              id="password"
+              class="input"
+              type="password"
+              placeholder="Enter password"
+              required
+              style="width: 100%; padding: 16px 50px 16px 20px; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 12px; color: rgba(255, 255, 255, 0.95); font-size: 16px; transition: all 0.3s ease; box-sizing: border-box;"
+              oninput="this.value = this.value.toLowerCase().replace(/\s/g, '')"
+            >
+            <button
+              id="togglePassword"
+              class="btn-icon password-toggle"
+              type="button"
+              aria-label="Show password"
+              style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(255, 255, 255, 0.6); font-size: 18px; cursor: pointer; padding: 8px; border-radius: 6px; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center;"
+            >
+              👁️
+            </button>
+          </div>
+        </div>
+
+        <button
+          class="btn btn-primary btn-block login-btn"
+          type="submit"
+          style="padding: 16px 24px; font-size: 16px; font-weight: 600; background: linear-gradient(135deg, var(--primary), #90d15b); border: none; border-radius: 12px; cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden;"
+        >
+          <span class="btn-text">Access Event Admin</span>
+          <span class="btn-loading" style="display: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+            <div style="width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid #fff; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+          </span>
+        </button>
+      </form>
+
+      <div id="loginError" class="error-message" style="margin-top: 20px; padding: 12px; background: rgba(220, 53, 69, 0.1); border: 1px solid rgba(220, 53, 69, 0.3); border-radius: 8px; color: #ff6b6b; font-size: 14px; display: none; text-align: center;">
+        <span style="font-size: 16px; margin-right: 8px;">⚠️</span>
+        Invalid password. Please try again.
+      </div>
+
+      <div style="margin-top: 24px; text-align: center; color: rgba(255, 255, 255, 0.6); font-size: 12px;">
+        <p>🔒 Secure login required for event management</p>
+        <p style="margin: 4px 0;">Contact admin if you need access assistance</p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Enhanced password toggle animation */
+    .password-toggle:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: rgba(255, 255, 255, 0.9) !important;
+      transform: translateY(-50%) scale(1.1) !important;
+    }
+
+    /* Input focus effects */
+    .form-group .input:focus {
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 3px rgba(123, 191, 68, 0.2) !important;
+      background: rgba(255, 255, 255, 0.15) !important;
+      transform: translateY(-1px);
+    }
+
+    /* Button hover effects */
+    .login-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(123, 191, 68, 0.3);
+    }
+
+    .login-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Loading spinner animation */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Error message slide in animation */
+    .error-message {
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Success feedback */
+    .login-success {
+      background: rgba(76, 175, 80, 0.1) !important;
+      border-color: rgba(76, 175, 80, 0.3) !important;
+      color: #4caf50 !important;
+    }
+  </style>
+
+  <main id="mainContainer" class="container event-admin-container" role="main" style="display: block;">
+    <!-- Header Section -->
+    <header class="event-admin-header">
+      <nav class="breadcrumb">
+        <a href="../admin.html">Admin</a> > <span id="eventName">Coding (C)</span>
+      </nav>
+      <h1 class="event-title" id="eventTitle">Coding (C) Participants</h1>
+      <p class="event-description" id="eventDescription">Solve programming problems in C within the time limit.</p>
+      <div class="event-stats">
+        <span class="stat-badge primary">
+          Participants: <span id="participantCount">0</span>
+        </span>
+        <span class="stat-badge" id="maxTeamBadge" style="display: none;">
+          Max Team Size: 2
+        </span>
+      </div>
+    </header>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="error-message"></div>
+
+    <!-- Toolbar -->
+    <div class="event-toolbar">
+      <div class="toolbar-left">
+        <input 
+          id="searchInput" 
+          class="search-input" 
+          type="text" 
+          placeholder="Search participants by name, email, phone, or token..."
+        >
+      </div>
+      <div class="toolbar-right">
+        <button id="exportBtn" class="btn btn-secondary">
+          📊 Export CSV
+        </button>
+        <a href="../events/redirect.html" class="btn btn-primary">
+          🏆 Score Board
+        </a>
+        <button id="supportBtn" class="btn btn-secondary">🆘 Support</button>
+      </div>
+    </div>
+
+    <!-- Participants Section -->
+    <div class="participants-section">
+      <!-- Loading State -->
+      <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading participants...</p>
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state">
+        <div class="empty-state-icon">💻</div>
+        <h3>No participants yet</h3>
+        <p>No one has registered for the Coding event yet. Check back later!</p>
+      </div>
+
+      <!-- Participants Table -->
+      <table id="participantsTable" class="participants-table" style="display: none;">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>College</th>
+            <th>Course</th>
+            <th>Payment</th>
+            <th>Token</th>
+            <th>Registered</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Participants will be populated here -->
+        </tbody>
+      </table>
+    </div>
+    <footer class="admin-footer">Anny Sarah Owner</footer>
+  </main>
+
+  <!-- Support Modal -->
+  <div id="supportModal" class="support-modal" aria-hidden="true" role="dialog" aria-labelledby="supportModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="supportModalTitle" class="modal-title">Support – Illumina Coordination</h3>
+        <button class="btn btn-secondary" id="closeSupportModal" aria-label="Close support modal">✖</button>
+      </div>
+      <div class="modal-body">
+        <p>Choose who to contact for <strong id="supportEventName">this event</strong>.</p>
+        <div class="contact-options">
+          <div class="contact-card">
+            <h4 class="contact-title">Rahul</h4>
+            <div class="contact-role">Site Admin & Developer</div>
+            <button class="btn btn-whatsapp contact-btn" data-support-name="Rahul" data-support-role="Site Admin & Developer" data-phone="919739904620">💬 WhatsApp</button>
+          </div>
+          <div class="contact-card">
+            <h4 class="contact-title">Vishal</h4>
+            <div class="contact-role">Registration & Site Designer</div>
+            <button class="btn btn-whatsapp contact-btn" data-support-name="Vishal" data-support-role="Registration & Site Designer" data-phone="917349321463">💬 WhatsApp</button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" id="closeSupportModal2">Close</button>
+    const mainContainer = document.getElementById('mainContainer');
+    const loginForm = document.getElementById('loginForm');
+    const passwordInput = document.getElementById('password');
+    const loginError = document.getElementById('loginError');
+    const pageLoader = document.getElementById('pageLoader');
+    const pageLoaderText = document.getElementById('pageLoaderText');
+
+    // Removed plaintext password; keep empty to disable hardcoded login
+    const PASSWORD = '';
+
+    // Enhanced login functionality
+    const togglePassword = document.getElementById('togglePassword');
+    const loginBtn = document.querySelector('.login-btn');
+    const btnText = document.querySelector('.btn-text');
+    const btnLoading = document.querySelector('.btn-loading');
+
+    // Password visibility toggle
+    togglePassword.addEventListener('click', () => {
+      const isPassword = passwordInput.type === 'password';
+      passwordInput.type = isPassword ? 'text' : 'password';
+      togglePassword.textContent = isPassword ? '🙈' : '👁️';
+      togglePassword.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+
+      // Add visual feedback
+      togglePassword.style.transform = 'translateY(-50%) scale(1.2)';
+      setTimeout(() => {
+        togglePassword.style.transform = 'translateY(-50%) scale(1)';
+      }, 150);
+    });
+
+    // Enhanced login submission
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const password = passwordInput.value.trim();
+      if (!password) {
+        showError('Please enter a password');
+        return;
+      }
+
+      // Show loading state
+      loginBtn.disabled = true;
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'block';
+      loginError.style.display = 'none';
+
+      // Simulate authentication check with delay
+      setTimeout(() => {
+        if (password === PASSWORD) {
+          // Success animation
+          loginBtn.style.background = 'linear-gradient(135deg, #66bb6a, #4caf50)';
+          btnText.textContent = '✓ Access Granted!';
+          btnText.style.display = 'block';
+          btnLoading.style.display = 'none';
+
+          setTimeout(() => {
+            sessionStorage.setItem('eventAdminAuth', 'true');
+            showMainContent();
+          }, 800);
+        } else {
+          // Error animation
+          showError('Invalid password. Please try again.');
+          loginBtn.disabled = false;
+          btnText.style.display = 'block';
+          btnLoading.style.display = 'none';
+          passwordInput.value = '';
+          passwordInput.focus();
+
+          // Shake animation for error
+          loginBtn.style.animation = 'shake 0.5s ease-in-out';
+          setTimeout(() => {
+            loginBtn.style.animation = '';
+          }, 500);
+        }
+      }, 1000);
+    });
+
+    // Enhanced error display
+    function showError(message) {
+      loginError.innerHTML = `<span style="font-size: 16px; margin-right: 8px;">⚠️</span>${message}`;
+      loginError.style.display = 'block';
+      loginError.style.animation = 'slideIn 0.3s ease-out';
+    }
+
+    // Add shake animation for errors
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Auto-focus password field
+    passwordInput.focus();
+
+    // Page loader functions
+    const showPageLoader = (text = 'Loading...') => {
+      if (pageLoader) {
+        if (pageLoaderText) pageLoaderText.textContent = text;
+        pageLoader.classList.add('show');
+      }
+    };
+
+    const hidePageLoader = () => {
+      if (pageLoader) pageLoader.classList.remove('show');
+    };
+
+    // Authentication functions
+    function checkAuth() {
+      // Always show main content; disable login gate
+      showMainContent();
+    }
+
+    function showLogin() {
+      loginContainer.style.display = 'block';
+      mainContainer.style.display = 'none';
+      passwordInput.focus();
+    }
+
+    function showMainContent() {
+      loginContainer.style.display = 'none';
+      mainContainer.style.display = 'block';
+      initPage();
+    }
+
+    // Initialize the page
+    async function initPage() {
+      try {
+        showPageLoader('Loading coding event data...');
+        
+        // Create and initialize event admin page for coding
+        const eventAdminPage = new EventAdminPage('coding');
+        await eventAdminPage.init();
+        
+        // Store reference for cleanup
+        window.eventAdminPage = eventAdminPage;
+        
+      } catch (error) {
+        console.error('Failed to initialize coding admin page:', error);
+        const errorEl = document.getElementById('errorMessage');
+        if (errorEl) {
+          errorEl.textContent = `Failed to load coding event page: ${error.message}`;
+          errorEl.classList.add('show');
+        }
+      } finally {
+        hidePageLoader();
+      }
+    }
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+      if (window.eventAdminPage) {
+        window.eventAdminPage.destroy();
+      }
+    });
+
+    // Start the application
+    checkAuth();
+
+    // Handle browser back/forward
+    window.addEventListener('pageshow', () => {
+      checkAuth();
+    });
+  </script>
+
+  <!-- Support handling script -->
+  <script>
+    (function() {
+      const supportBtn = document.getElementById('supportBtn');
+      const modal = document.getElementById('supportModal');
+      const closeBtns = [
+        document.getElementById('closeSupportModal'),
+        document.getElementById('closeSupportModal2')
+      ].filter(Boolean);
+      const eventTitleEl = document.getElementById('eventTitle');
+      const eventName = eventTitleEl ? eventTitleEl.textContent.trim() : 'Event';
+      const supportEventNameEl = document.getElementById('supportEventName');
+      if (supportEventNameEl) supportEventNameEl.textContent = eventName;
+
+      function buildMessage(name, role) {
+        return `Hello Illumina Coordination, I need support for ${eventName}. Contacting: ${name} (${role}).`;
+      }
+      function openWhatsAppWith(phone, name, role) {
+        const text = encodeURIComponent(buildMessage(name, role));
+        const url = `https://wa.me/${phone}?text=${text}`;
+        window.open(url, '_blank');
+      }
+
+      if (supportBtn && modal) {
+        supportBtn.addEventListener('click', () => {
+          modal.classList.add('show');
+          modal.setAttribute('aria-hidden', 'false');
+        });
+      }
+
+      closeBtns.forEach(btn => btn && btn.addEventListener('click', () => {
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden', 'true');
+      }));
+
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.classList.remove('show');
+            modal.setAttribute('aria-hidden', 'true');
+          }
+        });
+      }
+
+      document.querySelectorAll('.contact-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const phone = btn.getAttribute('data-phone');
+          const name = btn.getAttribute('data-support-name');
+          const role = btn.getAttribute('data-support-role');
+          if (phone) openWhatsAppWith(phone, name, role);
+        });
+      });
+    })();
+  </script>
+  <script type="module">
+    import { db } from '../../assets/js/firebase-config.js';
+    import { collection, getDocs, onSnapshot, query, where } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js';
+ 
+    // Fallback loader: if after 2s there are still 0 participants, try a broader fetch
+    const delay = (ms) => new Promise(r => setTimeout(r, ms));
+    (async () => {
+      try {
+        await delay(2000);
+        const countEl = document.getElementById('participantCount');
+        const table = document.getElementById('participantsTable');
+        const tbody = table ? table.querySelector('tbody') : null;
+        const emptyState = document.getElementById('emptyState');
+        if (!countEl || !table || !tbody) return;
+
+        const currentCount = parseInt(countEl.textContent || '0', 10);
+        if (currentCount > 0) return; // shared module already populated
+
+        const eventId = 'coding';
+        const eventSelectionsRef = collection(db, 'eventSelections');
+        onSnapshot(eventSelectionsRef, async (snapshot) => {
+          const rows = [];
+          for (const d of snapshot.docs) {
+            const data = d.data() || {};
+            const selections = Array.isArray(data.selections) ? data.selections : [];
+            const eventsArray = Array.isArray(data.events) ? data.events : [];
+            const hasEvent = (
+              selections.some(s => (s?.eventId === eventId || s === eventId)) ||
+              eventsArray.includes(eventId) ||
+              data.eventId === eventId ||
+              data[eventId] === true
+            );
+            if (!hasEvent) continue;
+
+            const token = data.userToken || data.token || data.shortId || data.userShortId;
+            if (!token) continue;
+
+            try {
+              const registrationsRef = collection(db, 'registrations');
+              let snap = await getDocs(query(registrationsRef, where('shortId', '==', token)));
+              if (snap.empty) snap = await getDocs(query(registrationsRef, where('token', '==', token)));
+              if (snap.empty) continue;
+              const user = snap.docs[0].data() || {};
+              if (user.deleted === true || user.isDeleted === true) continue;
+              rows.push({
+                name: user.name || user.username || 'N/A',
+                phone: user.phone || 'N/A',
+                college: user.college || 'N/A',
+                course: user.course || 'N/A',
+                shortId: user.shortId || user.token || 'N/A',
+                createdAt: user.createdAt || user.registrationDate || data.createdAt || null,
+              });
+            } catch (e) {
+              console.warn('Fallback fetch error:', e);
+            }
+          }
+
+          // Render fallback rows
+          if (rows.length === 0) {
+            table.style.display = 'none';
+            emptyState && (emptyState.style.display = 'block');
+            countEl.textContent = '0';
+            return;
+          }
+          table.style.display = 'table';
+          emptyState && (emptyState.style.display = 'none');
+          tbody.innerHTML = rows.map((p, i) => `
+            <tr>
+              <td>${i + 1}</td>
+              <td>${p.name}</td>
+              <td>${p.phone}</td>
+              <td>${p.college}</td>
+              <td>${p.course}</td>
+              <td></td>
+              <td>${p.shortId}</td>
+              <td>${(function(ts){ try{ const d = (ts && typeof ts.toDate === 'function') ? ts.toDate() : new Date(ts); return d.toLocaleDateString()+ ' ' + d.toLocaleTimeString(); }catch(_){ return 'N/A'; } }) (p.createdAt)}</td>
+            </tr>
+          `).join('');
+          countEl.textContent = String(rows.length);
+        });
+      } catch (err) {
+        console.warn('Fallback loader failed:', err);
+      }
+    })();
+  </script>
