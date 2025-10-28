@@ -44,7 +44,7 @@
 
     .event-breadcrumb a {
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-      color: #7bbf44;
+      color: #2C74B3;
       font-weight: 700;
     }
 
@@ -636,7 +636,7 @@
           await trackDownload(token, name, 'onspot');
           
           btn.textContent = '✅ RSVP Saved';
-          btn.style.background = '#28a745';
+          btn.style.background = '#2C74B3';
           
           setTimeout(() => {
             btn.textContent = originalText;
@@ -777,12 +777,12 @@
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
         // Border
-        ctx.strokeStyle = '#7bbf44';
+        ctx.strokeStyle = '#2C74B3';
         ctx.lineWidth = 4;
         ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
         
         // Header section
-        ctx.fillStyle = '#7bbf44';
+        ctx.fillStyle = '#2C74B3';
         ctx.fillRect(40, 40, canvas.width - 80, 80);
         
         // Title
@@ -803,7 +803,7 @@
         
         // Token number (large and prominent)
         ctx.font = 'bold 48px Arial';
-        ctx.fillStyle = '#7bbf44';
+        ctx.fillStyle = '#2C74B3';
         ctx.fillText(`TOKEN: ${tokenNo}`, canvas.width / 2, 300);
         
         // User details
@@ -818,12 +818,12 @@
         
         // Event date (more prominent)
         ctx.font = 'bold 20px Arial';
-        ctx.fillStyle = '#7bbf44';
+        ctx.fillStyle = '#2C74B3';
         ctx.fillText('Event Date: September 25, 2025', canvas.width / 2, 430);
         
         // Footer
         ctx.font = '14px Arial';
-        ctx.fillStyle = '#7bbf44';
+        ctx.fillStyle = '#2C74B3';
         ctx.fillText('Please present this ticket at the venue', canvas.width / 2, 480);
         
         // Generate and add QR code (scannable but compact)
@@ -896,7 +896,7 @@
             await trackDownload(token, name, mode);
             
             downloadBtn.textContent = '✅ RSVP Saved';
-            downloadBtn.style.background = '#28a745';
+            downloadBtn.style.background = '#2C74B3';
             
             setTimeout(() => {
               downloadBtn.textContent = originalText;
@@ -1007,7 +1007,7 @@
       const tokenHelpBtn = document.getElementById('tokenHelpBtn');
       const helperMessage = document.getElementById('whatsappHelperMessage');
       const helperClose = document.getElementById('helperClose');
-      const whatsappNumber = '7349321463'; // Support number
+      const whatsappNumber = '9940132453'; // Support number
 
       // Direct WhatsApp redirect
       whatsappBtn.addEventListener('click', () => {

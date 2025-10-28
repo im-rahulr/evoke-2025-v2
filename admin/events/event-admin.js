@@ -213,7 +213,7 @@ class EventAdminPage {
                 <div class="contact-card">
                   <h4 class="contact-title">Vishal</h4>
                   <div class="contact-role">Registration & Site Designer</div>
-                  <button class="btn btn-whatsapp contact-btn" data-support-name="Vishal" data-support-role="Registration & Site Designer" data-phone="917349321463">💬 WhatsApp</button>
+                  <button class="btn btn-whatsapp contact-btn" data-support-name="Vishal" data-support-role="Registration & Site Designer" data-phone="919940132453">💬 WhatsApp</button>
                 </div>
               </div>
               <div class="modal-actions">
@@ -571,7 +571,7 @@ export { EventAdminPage, EVENTS_DATA };
       container.innerHTML = `
         <div class="form-card" style="background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 32px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); backdrop-filter: blur(10px);">
           <div style="text-align: center; margin-bottom: 32px;">
-            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary), #90d15b); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 20px rgba(123, 191, 68, 0.3);">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary), #3a8ad3); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 20px rgba(44, 116, 179, 0.3);">
               <span style="font-size: 32px;">💻</span>
             </div>
             <h1 class="title" style="margin: 0; font-size: 28px; background: linear-gradient(135deg, #fff, #f0f0f0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Event Admin Access</h1>
@@ -613,7 +613,7 @@ export { EventAdminPage, EVENTS_DATA };
       const style = document.createElement('style');
       style.textContent = `
         .password-toggle:hover { background: rgba(255, 255, 255, 0.1) !important; color: rgba(255, 255, 255, 0.9) !important; transform: translateY(-50%) scale(1.1) !important; }
-        .form-group .input:focus { border-color: var(--primary) !important; box-shadow: 0 0 0 3px rgba(123, 191, 68, 0.2) !important; background: rgba(255, 255, 255, 0.15) !important; transform: translateY(-1px); }
+        .form-group .input:focus { border-color: var(--primary) !important; box-shadow: 0 0 0 3px rgba(44, 116, 179, 0.2) !important; background: rgba(255, 255, 255, 0.15) !important; transform: translateY(-1px); }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
       `;
       document.head.appendChild(style);

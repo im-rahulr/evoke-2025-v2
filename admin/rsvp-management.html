@@ -182,7 +182,7 @@
     }
 
     .downloads-table tbody tr:hover {
-      background: rgba(123, 191, 68, 0.05);
+      background: rgba(44, 116, 179, 0.05);
     }
 
     .download-type {
@@ -194,7 +194,7 @@
     }
 
     .download-type.user {
-      background: rgba(123, 191, 68, 0.2);
+      background: rgba(44, 116, 179, 0.2);
       color: var(--primary);
     }
 
@@ -515,7 +515,7 @@
         });
 
         updatePaymentBtn.textContent = 'Updated!';
-        updatePaymentBtn.style.background = '#28a745';
+        updatePaymentBtn.style.background = '#2C74B3';
         
         // Refresh user details if currently displayed
         if (currentUserData && currentUserData.shortId === tokenNo) {
@@ -563,7 +563,7 @@
         );
 
         downloadAdminRsvp.textContent = '✅ Downloaded';
-        downloadAdminRsvp.style.background = '#28a745';
+        downloadAdminRsvp.style.background = '#2C74B3';
 
         // Refresh stats and recent downloads
         loadRsvpStats();
@@ -599,12 +599,12 @@
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       // Border
-      ctx.strokeStyle = '#7bbf44';
+      ctx.strokeStyle = '#2C74B3';
       ctx.lineWidth = 4;
       ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
       
       // Header section
-      ctx.fillStyle = '#7bbf44';
+      ctx.fillStyle = '#2C74B3';
       ctx.fillRect(40, 40, canvas.width - 80, 80);
       
       // Title
@@ -625,7 +625,7 @@
       
       // Token number
       ctx.font = 'bold 48px Arial';
-      ctx.fillStyle = '#7bbf44';
+      ctx.fillStyle = '#2C74B3';
       ctx.fillText(`TOKEN: ${tokenNo}`, canvas.width / 2, 300);
       
       // User details
@@ -640,7 +640,7 @@
       
       // Event date
       ctx.font = 'bold 20px Arial';
-      ctx.fillStyle = '#7bbf44';
+      ctx.fillStyle = '#2C74B3';
       ctx.fillText('Event Date: September 25, 2025', canvas.width / 2, 430);
       
       // Footer

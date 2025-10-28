@@ -37,7 +37,7 @@
 
     .btn-secondary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(123, 191, 68, 0.3);
+      box-shadow: 0 4px 12px rgba(44, 116, 179, 0.3);
     }
 
     /* Security indicator */
@@ -45,8 +45,8 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      background: rgba(40, 167, 69, 0.1);
-      color: #28a745;
+      background: rgba(44, 116, 179, 0.1);
+      color: #2C74B3;
       padding: 4px 8px;
       border-radius: 12px;
       font-size: 11px;
@@ -67,7 +67,7 @@
 
     #checkPaymentBtn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(123, 191, 68, 0.4);
+      box-shadow: 0 4px 12px rgba(44, 116, 179, 0.4);
       opacity: 0.9;
     }
 
@@ -368,7 +368,7 @@
       <h1 class="title" style="text-align: center; margin-bottom: 4px;" id="paymentTitle">Pay ₹250</h1>
       <p class="subtitle" style="text-align: center; margin-top: 0;">Scan the QR code to pay using any UPI app</p>
       <!-- User Details (from session) -->
-      <div id="userInfo" style="display:none; background: rgba(123, 191, 68, 0.1); border: 1px solid var(--primary); border-radius: 8px; padding: 12px; margin: 12px 0;">
+      <div id="userInfo" style="display:none; background: rgba(44, 116, 179, 0.1); border: 1px solid var(--primary); border-radius: 8px; padding: 12px; margin: 12px 0;">
         <h3 style="margin: 0 0 6px 0; color: var(--primary); font-size: 14px;">Registration Details</h3>
         <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:12px;">
           <div><strong>Name:</strong> <span id="userName"></span></div>
@@ -495,7 +495,7 @@
       amount: '250',
       merchantName: 'MADHAVI',
       transactionNote: 'Evoke 2k25 Registration Fee',
-      whatsappNumber: '7349321463'
+      whatsappNumber: '9940132453'
     };
 
     // Load event selections and update payment amount (no UI list)
@@ -887,7 +887,7 @@ Please confirm my payment status.`;
       const instructionsDiv = document.createElement('div');
       instructionsDiv.className = 'manual-upi-instructions';
       instructionsDiv.style.cssText = `
-        background: rgba(123, 191, 68, 0.1);
+        background: rgba(44, 116, 179, 0.1);
         border: 1px solid var(--primary);
         border-radius: 8px;
         padding: 20px;
@@ -1028,7 +1028,7 @@ Please confirm my payment status.`;
       const messageDiv = document.createElement('div');
       messageDiv.className = 'payment-status-message';
       messageDiv.style.cssText = `
-        background: rgba(123, 191, 68, 0.1);
+        background: rgba(44, 116, 179, 0.1);
         border: 1px solid var(--primary);
         border-radius: 8px;
         padding: 16px;
@@ -1524,7 +1524,7 @@ Please help me resolve this issue.`;
       const whatsappPopup = document.getElementById('whatsappPopup');
       const whatsappClose = document.getElementById('whatsappClose');
       const whatsappActions = document.querySelectorAll('.whatsapp-action');
-      const whatsappNumber = '7349321463'; // Support number
+      const whatsappNumber = '9940132453'; // Support number
 
       // Toggle popup
       whatsappBtn.addEventListener('click', () => {

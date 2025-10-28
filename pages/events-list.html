@@ -16,6 +16,36 @@
       margin: 16px 0;
       padding-bottom: 32px; /* Default spacing; extra space only when summary is visible */
     }
+
+    /* Page-specific blurred background to enhance aesthetics and readability */
+    body.events-list::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: var(--home-bg) center/cover no-repeat fixed;
+      filter: saturate(0.9) blur(50px);
+    }
+
+    /* Slightly darker overlay to ensure text remains readable */
+    body.events-list::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(1200px 800px at 50% 10%, rgba(0,0,0,0.3), rgba(0,0,0,0.85)),
+        linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
+      pointer-events: none;
+    }
+
+    /* Improve text legibility on top of blurred background */
+    .event-title,
+    .event-description,
+    .selection-summary,
+    .user-info {
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
     
     @media (min-width: 768px) {
       .events-grid {
@@ -55,7 +85,7 @@
     
     .event-card.selected {
       border-color: var(--primary);
-      background: rgba(123, 191, 68, 0.05);
+      background: rgba(44, 116, 179, 0.05);
     }
     
     .event-card .event-content {
@@ -143,7 +173,7 @@
     }
     
     .user-info {
-      background: rgba(123, 191, 68, 0.1);
+      background: rgba(44, 116, 179, 0.1);
       border: 1px solid var(--primary);
       border-radius: 6px;
       padding: 10px 12px;
@@ -239,7 +269,7 @@
     }
   </style>
 </head>
-<body class="home-page">
+<body class="home-page events-list">
   <main class="container" role="main">
     <header class="event-header">
       <div class="event-info">
@@ -304,7 +334,7 @@
       {
         id: 'fashion-show',
         title: 'Fashion Show (Indian Culture)',
-        description: 'Individual. Theme adherence, modest attire, props allowed. 30s on stage.',
+        description: 'Individual. Modest attire, props allowed. 30s on stage.',
         maxParticipants: 1
       },
       {

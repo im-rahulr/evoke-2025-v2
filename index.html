@@ -9,14 +9,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/main.css?v=20240917">
   <style>
+    .title {
+      font-family: 'Times New Roman', Times, serif !important;
+    }
     :root {
       --bg: #0b0b0b;
       --surface: #262524;
       --text: #B3B3B3;
       --muted: #B3B3B3;
       --line: #31302F;
-      --primary: #7bbf44;
-      --primary-dark: #6aac37;
+      --primary: #2C74B3;
+      --primary-dark: #235d8f;
     }
 
     body {
@@ -34,7 +37,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
+      text-align: center; 
       gap: 16px;
     }
 
@@ -350,6 +353,11 @@
   <meta name="twitter:image" content="https://lac-chess.netlify.app/assets/images/og-image.jpg">
 </head>
 <body class="home-page">
+  <div id="siteBanner" class="site-banner" style="position: fixed; top: 0; left: 0; right: 0; min-height: 40px; background: #d0021b; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 44px 6px 16px; z-index: 3000; box-shadow: 0 1px 0 rgba(0,0,0,.35) inset; text-align: center; line-height: 1.2; font-weight: 600; flex-wrap: wrap; box-sizing: border-box; word-wrap: anywhere; visibility: visible; opacity: 1;">
+    <span style="font-size: 1rem;">Register by <b>20 Nov 2025</b> • ₹100 per event (pre-register) / ₹150 on-spot</span>
+    <button id="bannerCloseBtn" aria-label="Close banner" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; color: #fff; border: 0; font-size: 22px; line-height: 1; cursor: pointer;">×</button>
+  </div>
+  <div class="banner-spacer" style="height: 40px;"></div>
   <!-- Star Falling Animation -->
   <div class="stars-container">
     <div class="star"></div>
@@ -374,11 +382,13 @@
     <div class="star"></div>
   </div>
 
-  <main class="container" role="main">
-    <div class="chess-logo">
-      <a href="index.html"><img src="assets/images/lowrylogo.png" alt="Evoke 2k25 Logo"></a>
+  <main class="container" role="main" style="padding-top: 20px;">
+    <div class="chess-logo" style="margin: 20px auto; max-width: 200px; text-align: center;">
+      <a href="index.html"><img src="assets/images/lowrylogo.png" alt="Evoke 2k25 Logo" style="max-width: 100%; height: auto;"></a>
     </div>
-    <h1 class="title">INTER-SCHOOL FEST • Evoke'2k25</h1>
+    <h1 class="title">INTER-SCHOOL FEST Evoke'2k25</h1>
+    <p class="subtitle" style="margin-top: 8px; font-family: 'Times New Roman', Times, serif; font-style: italic; font-size: 1.3em; color: #fff;">“Bring out the best in You.”</p>
+    
     <p class="subtitle">At Lowry Memorial PU College</p>
 
     <p class="meta">Register by 20 Nov 2025 • ₹100 per event (pre-register) / ₹150 on-spot</p>
@@ -393,95 +403,84 @@
       <div class="events-grid">
         <!-- Technical Events -->
         <article class="event-card">
-          <h3 class="event-name">Dumb Charades</h3>
+          <h3 class="event-name">1. Dumb Charades</h3>
           <p class="event-description">Team of 2. Act without speaking; 1 minute per word. 10 prompts, need 8 correct to qualify.</p>
-          <a class="event-link" href="events/events-dumb-charades.html">View details →</a>
+          <a class="event-link" href="pages/events/dumb-charades.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">G.K. Quiz</h3>
+          <h3 class="event-name">2. G.K. Quiz</h3>
           <p class="event-description">Two per team. Prelims written; finals oral. Includes Aptitude, Current Affairs, Sports, Science and more.</p>
-          <a class="event-link" href="events/events-general-quiz.html">View details →</a>
+          <a class="event-link" href="pages/events/gk-quiz.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">Fashion Show (Indian Culture)</h3>
+          <h3 class="event-name">3. Fashion Show (Indian Culture)</h3>
           <p class="event-description">Individual. Theme adherence, modest attire, props allowed. 30s on stage.</p>
-          <a class="event-link" href="events/events-fashion-show.html">View details →</a>
+          <a class="event-link" href="pages/events/fashion-show.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">Group Song</h3>
+          <h3 class="event-name">4. Group Song</h3>
           <p class="event-description">3–5 members. Max 4 mins. Any language; judged on vocals, musicality, presence and style.</p>
-          <a class="event-link" href="events/events-group-song.html">View details →</a>
+          <a class="event-link" href="pages/events/group-song.html">View details →</a>
         </article>
-
-        <!-- Literary Events -->
         <article class="event-card">
-          <h3 class="event-name">Solo Song</h3>
+          <h3 class="event-name">5. Solo Song</h3>
           <p class="event-description">Individual. Max 2 mins. Any language; decent content. Own track/karaoke allowed.</p>
-          <a class="event-link" href="events/events-solo-singing.html">View details →</a>
+          <a class="event-link" href="pages/events/solo-song.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">Group Dance</h3>
+          <h3 class="event-name">6. Group Dance</h3>
           <p class="event-description">2–5 members. Theme: Cinematic. 3+1 mins; fusion allowed; no religious acts.</p>
-          <a class="event-link" href="events/events-group-dance.html">View details →</a>
+          <a class="event-link" href="pages/events/group-dance.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">Solo Dance</h3>
+          <h3 class="event-name">7. Solo Dance</h3>
           <p class="event-description">Individual. 4 mins. Free Style. Fusion allowed. No religious acts; decent performance.</p>
-          <a class="event-link" href="events/events-solo-dance.html">View details →</a>
+          <a class="event-link" href="pages/events/solo-dance.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">Instrumental Music</h3>
+          <h3 class="event-name">8. Instrumental Music</h3>
           <p class="event-description">Individual. Bring your own instruments. Time limit 3 minutes.</p>
-          <a class="event-link" href="events/events-solo-instrumental.html">View details →</a>
+          <a class="event-link" href="pages/events/instrumental-music.html">View details →</a>
         </article>
-
-        <!-- Cultural Events -->
         <article class="event-card">
-          <h3 class="event-name">Face Painting</h3>
+          <h3 class="event-name">9. Face Painting</h3>
           <p class="event-description">Team of 2 (one paints on the other). Time limit 1 hour. Free Theme.</p>
-          <a class="event-link" href="events/events-face-painting.html">View details →</a>
+          <a class="event-link" href="pages/events/face-painting.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">Cooking Without Fire</h3>
+          <h3 class="event-name">10. Cooking Without Fire</h3>
           <p class="event-description">Individual. 1½ hours. No fire; own utensils; no precooked items; creativity judged.</p>
-          <a class="event-link" href="events/events-fireless-cooking.html">View details →</a>
+          <a class="event-link" href="pages/events/cooking-without-fire.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">Vegetable Carving</h3>
+          <h3 class="event-name">11. Vegetable Carving</h3>
           <p class="event-description">Individual. 1 hour. Bring own veggies and tools; follow given theme.</p>
-          <a class="event-link" href="events/events-vegetable-carving.html">View details →</a>
+          <a class="event-link" href="pages/events/vegetable-carving.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">Pot Painting</h3>
+          <h3 class="event-name">12. Pot Painting</h3>
           <p class="event-description">Pot provided. 1 hour. Only hand painting; bring materials; no spray paint.</p>
-          <a class="event-link" href="events/events-pot-painting.html">View details →</a>
+          <a class="event-link" href="pages/events/pot-painting.html">View details →</a>
         </article>
-
-        <!-- Creative Events -->
         <article class="event-card">
-          <h3 class="event-name">Art and Craft</h3>
+          <h3 class="event-name">13. Art and Craft</h3>
           <p class="event-description">Individual. Bring own materials and tools. Time: 1 hour. Original work only.</p>
-          <a class="event-link" href="events/events-art-craft.html">View details →</a>
+          <a class="event-link" href="pages/events/art-craft.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">Collage Competition</h3>
+          <h3 class="event-name">14. Collage Competition</h3>
           <p class="event-description">Team of ≥2. Theme on the spot. Time 1 hour. Charts provided. Handmade only.</p>
-          <a class="event-link" href="events/events-collage-competition.html">View details →</a>
+          <a class="event-link" href="pages/events/collage-competition.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">Pencil Sketch</h3>
+          <h3 class="event-name">15. Pencil Sketch</h3>
           <p class="event-description">Individual. Theme on the spot. Papers provided. Graphite/charcoal only.</p>
-          <a class="event-link" href="events/events-pencil-sketch.html">View details →</a>
+          <a class="event-link" href="pages/events/pencil-sketch.html">View details →</a>
         </article>
         <article class="event-card">
-          <h3 class="event-name">Best Out of Waste</h3>
+          <h3 class="event-name">16. Best Out of Waste</h3>
           <p class="event-description">Individual. 1½ hours. Only waste/recyclable materials; eco-friendly models.</p>
-          <a class="event-link" href="events/events-best-waste.html">View details →</a>
-        </article>
-        <article class="event-card">
-          <h3 class="event-name">On-Stage / Off-Stage Rule Book</h3>
-          <p class="event-description">Read the complete rules, fees, and guidelines for all events.</p>
-          <a class="event-link" href="pages/rules-new.html">Open rule book →</a>
+          <a class="event-link" href="pages/events/best-out-of-waste.html">View details →</a>
         </article>
       </div>
     </section>
@@ -604,7 +603,7 @@
       const whatsappPopup = document.getElementById('whatsappPopup');
       const whatsappClose = document.getElementById('whatsappClose');
       const whatsappActions = document.querySelectorAll('.whatsapp-action');
-      const whatsappNumber = '7349321463'; // Support number
+      const whatsappNumber = '9940132453'; // Support number
 
       // Toggle popup
       whatsappBtn.addEventListener('click', () => {
@@ -646,6 +645,13 @@
         }, 5000);
       }
     })();
+
+    // Banner close logic
+    const bannerBtn = document.getElementById('bannerCloseBtn');
+    const bannerEl = document.getElementById('siteBanner');
+    if(bannerBtn) {
+      bannerBtn.onclick = function() { bannerEl.style.display = 'none'; };
+    }
   </script>
 
 

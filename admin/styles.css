@@ -1,11 +1,11 @@
 /* Admin Panel Styles - Enhanced Version */
 
 :root {
-  --primary: #7bbf44;
-  --primary-dark: #6ba83a;
-  --primary-light: rgba(123, 191, 68, 0.1);
+  --primary: #2C74B3;
+  --primary-dark: #235d8f;
+  --primary-light: rgba(44, 116, 179, 0.1);
   --secondary: #4a90e2;
-  --success: #28a745;
+  --success: #2C74B3;
   --warning: #ffc107;
   --danger: #dc3545;
   --info: #17a2b8;
@@ -187,7 +187,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-success:hover {
-  background: #218838;
+  background: #235d8f;
 }
 
 .btn-warning {
@@ -356,9 +356,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .badge-success {
-  background: rgba(40, 167, 69, 0.2);
+  background: rgba(44, 116, 179, 0.2);
   color: var(--success);
-  border: 1px solid rgba(40, 167, 69, 0.3);
+  border: 1px solid rgba(44, 116, 179, 0.3);
 }
 
 .badge-warning {

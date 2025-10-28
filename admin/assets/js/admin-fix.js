@@ -55,8 +55,8 @@ async function renderCharts(byCourse, byCollege) {
         datasets: [{
           label: 'Registrations',
           data: [12, 19, 3, 5, 2, 3, 7],
-          borderColor: '#7bbf44',
-          backgroundColor: 'rgba(123, 191, 68, 0.1)',
+          borderColor: '#2C74B3',
+          backgroundColor: 'rgba(44, 116, 179, 0.1)',
           tension: 0.4
         }]
       },
@@ -71,7 +71,7 @@ async function renderCharts(byCourse, byCollege) {
         datasets: [{
           label: 'Count',
           data: Object.values(byCourse),
-          backgroundColor: ['#7bbf44', '#6aac37', '#5a9b2a', '#4a8b1d']
+          backgroundColor: ['#2C74B3', '#235d8f', '#1e527d', '#1a486d']
         }]
       },
       options: chartOptions
@@ -84,7 +84,7 @@ async function renderCharts(byCourse, byCollege) {
         labels: ['Sample College 1', 'Sample College 2', 'Others'],
         datasets: [{
           data: [10, 8, 5],
-          backgroundColor: ['#7bbf44', '#6aac37', '#5a9b2a']
+          backgroundColor: ['#2C74B3', '#235d8f', '#1e527d']
         }]
       },
       options: {
@@ -108,7 +108,7 @@ async function renderCharts(byCourse, byCollege) {
         labels: Object.keys(byCourse).map((k, i) => `${k} (${percentages[i]}%)`),
         datasets: [{
           data: Object.values(byCourse),
-          backgroundColor: ['#7bbf44', '#6aac37', '#5a9b2a', '#4a8b1d']
+          backgroundColor: ['#2C74B3', '#235d8f', '#1e527d', '#1a486d']
         }]
       },
       options: {
