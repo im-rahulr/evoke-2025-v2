@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/main.css?v=20240916">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20251030">
   <style>
     /* Enhanced payment flow styles */
     .payment-status-message {
@@ -384,8 +384,8 @@
             <img src="../assets/images/qrcode.png" alt="Payment QR Code" style="width: 200px; height: 200px; display: block;" />
           </div>
           <div class="helper" style="margin: 12px 0 0; font-weight: 500; text-align: center;">
-            <div style="margin-top: 12px; font-size: 15px; font-weight: 600; color: #fff;">Name: [New Receiver Name]</div>
-            <div style="margin-top: 4px; font-size: 13px; color: var(--muted);">Phone: [New Phone Number]</div>
+            <div style="margin-top: 12px; font-size: 15px; font-weight: 600; color: #fff;">UPI ID: 8748898011@ibl</div>
+            <div style="margin-top: 4px; font-size: 13px; color: var(--muted);">Evoke 2k25 Registration</div>
           </div>
         </div>
 
@@ -435,7 +435,7 @@
     <div class="whatsapp-popup" id="whatsappPopup">
       <div class="whatsapp-header">
         <div class="whatsapp-avatar">
-          <div class="avatar-circle">V</div>
+          <div class="avatar-circle">E</div>
         </div>
         <div class="whatsapp-info">
           <div class="whatsapp-name">Eliezer Immanuel</div>
@@ -494,9 +494,9 @@
   <script>
     // Secure UPI payment configuration
     const UPI_CONFIG = {
-      id: '[new-upi-id]',
+      id: '8748898011@ibl',
       amount: '100',
-      merchantName: '[New Receiver Name]',
+      merchantName: 'Evoke 2k25',
       transactionNote: 'Evoke 2k25 Registration Fee',
       whatsappNumber: '9940132453'
     };
@@ -601,8 +601,8 @@
       let transactionNote = `Token ${userContext?.token || 'N/A'} Evoke 2k25 Lowry College`;
 
       const params = new URLSearchParams({
-        pa: '[new-upi-id]',
-        pn: '[New Receiver Name]',
+        pa: '8748898011@ibl',
+        pn: 'Evoke 2k25',
         mc: '0000',
         mode: '02',
         purpose: '00',
