@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin – Evoke 2k25</title>
+  <title>Admin – Evoka 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -346,20 +346,20 @@
       box-shadow: 0 4px 12px rgba(123, 191, 68, 0.4);
     }
   </style>
-  <meta name="description" content="Admin panel for Evoke 2k25 registrations.">
+  <meta name="description" content="Admin panel for Evoka 2025 registrations.">
   <!-- Open Graph / WhatsApp / Facebook -->
-  <meta property="og:site_name" content="Evoke 2k25">
+  <meta property="og:site_name" content="Evoka 2025">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Admin • Evoke 2k25">
-  <meta property="og:description" content="Admin panel for Evoke 2k25 registrations.">
+  <meta property="og:title" content="Admin • Evoka 2025">
+  <meta property="og:description" content="Admin panel for Evoka 2025 registrations.">
   <meta property="og:url" content="https://lac-chess.netlify.app/admin.html">
   <meta property="og:image" content="https://lac-chess.netlify.app/images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Admin • Evoke 2k25">
-  <meta name="twitter:description" content="Admin panel for Evoke 2k25 registrations.">
+  <meta name="twitter:title" content="Admin • Evoka 2025">
+  <meta name="twitter:description" content="Admin panel for Evoka 2025 registrations.">
   <meta name="twitter:image" content="https://lac-chess.netlify.app/images/og-image.jpg">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0TXQST3MG"></script>
@@ -1545,7 +1545,7 @@
         const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = `Evoke 2k25-registrations-${new Date().toISOString().split('T')[0]}.csv`;
+        a.download = `Evoka 2025-registrations-${new Date().toISOString().split('T')[0]}.csv`;
         a.click();
         URL.revokeObjectURL(a.href);
 
@@ -1801,10 +1801,10 @@
 
         // Create verification payload
         const payload = JSON.stringify({
-          type: 'Evoke2k25_ticket',
+          type: 'Evoka2025_ticket',
           token: tokenNo,
           name: userName,
-          event: 'Evoke 2k25',
+          event: 'Evoka 2025',
           date: 'November 27, 2025',
           venue: 'Lowry Adventist College, Bangalore',
           ts: Date.now()
@@ -1888,10 +1888,10 @@
         const QRCode = await import('https://cdn.jsdelivr.net/npm/qrcode@1.5.3/+esm');
 
         const payload = JSON.stringify({
-          type: 'Evoke2k25_ticket',
+          type: 'Evoka2025_ticket',
           token: tokenNo,
           name: userName,
-          event: 'Evoke 2k25',
+          event: 'Evoka 2025',
           date: 'November 27, 2025',
           venue: 'Lowry Adventist College, Bangalore',
           ts: Date.now()

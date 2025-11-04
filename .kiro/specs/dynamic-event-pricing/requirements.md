@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This feature implements a dynamic pricing system for the Evoke 2k25 event registration platform. Currently, the system has a fixed payment structure, but this enhancement will introduce per-event pricing (₹100 per event), dynamic total calculation based on selected events, and comprehensive display of pricing information across the user journey and admin panel.
+This feature implements a dynamic pricing system for the Evoka 2025 event registration platform. Currently, the system has a fixed payment structure, but this enhancement will introduce per-event pricing (₹100 per event), dynamic total calculation based on selected events, and comprehensive display of pricing information across the user journey and admin panel.
 
 ## Glossary
 
@@ -56,7 +56,7 @@ This feature implements a dynamic pricing system for the Evoke 2k25 event regist
 
 1. WHEN a user navigates to the payment page, THE Payment Page SHALL display the total amount calculated from selected events
 2. THE Payment Page SHALL display the amount in the page title as "Pay ₹[amount]"
-3. THE Payment Page SHALL display the amount in the UPI transaction note as "Token [token] Evoke 2k25 Registration - ₹[amount]"
+3. THE Payment Page SHALL display the amount in the UPI transaction note as "Token [token] Evoka 2025 Registration - ₹[amount]"
 4. THE Payment Page SHALL retrieve the total amount from sessionStorage key 'totalAmount'
 
 ### Requirement 5: QR Code Ticket Amount Display

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design implements a dynamic pricing system for the Evoke 2k25 event registration platform. The system calculates costs based on the number of events selected (₹100 per event) and displays pricing information consistently across the user journey from event selection through payment to ticket generation. The admin panel is enhanced to display event counts and payment amounts for each registration.
+This design implements a dynamic pricing system for the Evoka 2025 event registration platform. The system calculates costs based on the number of events selected (₹100 per event) and displays pricing information consistently across the user journey from event selection through payment to ticket generation. The admin panel is enhanced to display event counts and payment amounts for each registration.
 
 ## Architecture
 
@@ -186,7 +186,7 @@ function loadEventSelections() {
   
   // Update transaction note
   const userContext = getUserContext();
-  UPI_CONFIG.transactionNote = `Token ${userContext?.token || 'N/A'} Evoke 2k25 - ${eventCount} event(s) - ₹${totalAmount}`;
+  UPI_CONFIG.transactionNote = `Token ${userContext?.token || 'N/A'} Evoka 2025 - ${eventCount} event(s) - ₹${totalAmount}`;
 }
 ```
 
