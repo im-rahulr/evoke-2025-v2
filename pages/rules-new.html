@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTER-SCHOOL FEST • Evoke 2025</title>
+    <style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../assets/images/backgrounds/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.college-logo {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+}
+
+.college-info h1 {
+    font-size: 1.8em;
+    margin: 0;
+    color: #ffd700; /* Gold color for college name */
+}
+
+.college-info p {
+    font-size: 0.9em;
+    margin: 5px 0 0;
+    color: #ccc;
+}
+
+.event-title h2 {
+    font-family: 'Georgia', serif; /* Example font, adjust as needed */
+    font-size: 3.5em;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.event-title h3 {
+    font-family: 'Brush Script MT', cursive; /* Example font, adjust as needed */
+    font-size: 2em;
+    margin: 5px 0 0;
+    color: #ff4500; /* OrangeRed color for spark */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qr-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.qr-code {
+    width: 150px;
+    height: 150px;
+    border: 5px solid #fff;
+    border-radius: 5px;
+}
+
+.qr-section p {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #fff;
+}
+
+.rules-section {
+    width: 100%;
+    text-align: left;
+}
+
+.rules-section h4 {
+    font-size: 1.5em;
+    color: #ffd700; /* Gold color for rules heading */
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.rules-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rules-section ul li {
+    margin-bottom: 10px;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #eee;
+    position: relative;
+    padding-left: 20px;
+}
+
+.rules-section ul li::before {
+    content: '•';
+    color: #ffd700; /* Gold color for bullet points */
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+footer h5 {
+    font-size: 1.2em;
+    color: #ff4500; /* OrangeRed color for footer text */
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .college-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .college-info h1 {
+        font-size: 1.5em;
+    }
+
+    .event-title h2 {
+        font-size: 2.5em;
+    }
+
+    .event-title h3 {
+        font-size: 1.5em;
+    }
+
+    .qr-code {
+        width: 120px;
+        height: 120px;
+    }
+
+    .rules-section h4 {
+        font-size: 1.3em;
+    }
+
+    .rules-section ul li {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    .logo-section {
+        flex-direction: column;
+    }
+
+    .college-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .college-info h1 {
+        font-size: 1.2em;
+    }
+
+    .college-info p {
+        font-size: 0.8em;
+    }
+
+    .event-title h2 {
+        font-size: 2em;
+    }
+
+    .event-title h3 {
+        font-size: 1.2em;
+    }
+
+    .qr-code {
+        width: 100px;
+        height: 100px;
+    }
+
+    .rules-section h4 {
+        font-size: 1.1em;
+    }
+
+    .rules-section ul li {
+        font-size: 0.85em;
+        padding-left: 15px;
+    }
+
+    .rules-section ul li::before {
+        left: 0;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <img src="../assets/images/lowrylogo.png" alt="Lowry Adventist College Logo" class="college-logo">
+                <div class="college-info">
+                    <h1>LOWRY ADVENTIST COLLEGE</h1>
+                    <p>Besides K R Pura Metro Station, Dooravaninagar, Bengaluru - 16</p>
+                </div>
+            </div>
+            <div class="event-title">
+                <h2>INTER-SCHOOL FEST</h2>
+                <h3>Evoke 2025 • “Bring out the best in You.”</h3>
+            </div>
+        </header>
+
+        <main>
+            <!-- Scanner section removed -->
+
+            <div class="rules-section">
+                <h4>RULES TO BE FOLLOWED</h4>
+                <ul>
+                    <li>Registration for all the events starts from 8:00 AM to 8:30 AM.</li>
+                    <li>Each participant must carry their school ID at all times.</li>
+                    <li>Participants must be present for the inaugural program at 8:30 AM.</li>
+                    <li>Teams that are late or miss their slot for any event will be disqualified.</li>
+                    <li>Partaking in any kind of obscenity will lead to the debarring of the team from any further participation.</li>
+                    <li>Illegal or restricted items such as alcohol, tobacco or drugs are strictly prohibited. Weapons, sharp objects or harmful items are not allowed.</li>
+                    <li>Participants must strictly follow the code of conduct and maintain discipline.</li>
+                    <li>Participants must carry the required equipment for their events.</li>
+                    <li>The organizers reserve the right to cancel, reschedule the time or change the venue of any event. A minimum of three teams (for team event or 3 participants for individual events) must be there for an event or it will be cancelled.</li>
+                    <li>Decision of the judges and coordinators will be final.</li>
+                    <li>Tracks for solo dance, group dance, solo instrumental must be submitted in a pendrive at the time of registration.</li>
+                    <li>The management will not be responsible for the loss of personal belongings.</li>
+                    <li>A participant may register for a maximum of two events.</li>
+                    <li>Lunch will be provided for all the Participants.</li>
+                    <li>The final event of the day will conclude at 5:00pm.</li>
+                    <li>The last date for the FEST registration is 20th November 2025.</li>
+                    <li>Participants who register prior for the FEST shall pay a fee of ₹100 per Event.</li>
+                    <li>Participants who register on the day of the FEST Shall pay a fee of ₹150 per Event.</li>
+                </ul>
+                <br>
+                <h4>EVENTS AND RULES</h4>
+                <ul>
+                    <li>
+                        <strong>1 Dumb Charades</strong>
+                        <ul>
+                            <li>A team must consist of 2 participants.</li>
+                            <li>One participant acts out the word or phrase without speaking/sound/no lip-syncing.</li>
+                            <li>Another participant must guess the word/phrase enacted.</li>
+                            <li>Time limit allotted for guessing is 1 minute.</li>
+                            <li>A buzzer will indicate the end of the allotted time for the round.</li>
+                            <li>Each team will receive 10 words per round out of which a minimum of 8 must be answered correctly to qualify for the round.</li>
+                            <li>Judges' decision is final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>2 G.K. Quiz</strong>
+                        <p>There will be two stages for this event</p>
+                        <ul>
+                            <li>Prelims written test will be conducted.</li>
+                            <li>Two members per team.</li>
+                            <li>Maximum of two teams per school.</li>
+                            <li>The quiz will be based on Aptitude, Current Affairs, Sports, Mathematics, Science, Inventions, and Geography.</li>
+                            <li>4 qualified teams in the prelims written test will be participating in the final oral round.</li>
+                            <li>Judges' decision will be final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>3 Fashion Show: Theme: Indian Culture</strong>
+                        <p><strong>Individual Participation</strong></p>
+                        <ul>
+                            <li>The participants or outfits must adhere to the given theme.</li>
+                            <li>Clothing should be appropriate and modest. (Sleeveless attire, above the knee dresses, scandalous outfits, or ripped cloths are not allowed).</li>
+                            <li>Props, hats, bags, accessories can be utilized.</li>
+                            <li>The time limit will be 30 seconds on stage.</li>
+                            <li>The decision of the judges will be final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>4 Group Song</strong>
+                        <ul>
+                            <li>Each team may consist of 3 to 5 members.</li>
+                            <li>Performance time should be maximum 4 minutes.</li>
+                            <li>Songs may be in any language, but must be appropriate and decent.</li>
+                            <li>Participants will be judged based on Vocal Performance, Musicality, Stage Presence, Technical Skill and Performance Style.</li>
+                            <li>Participants can bring their own track/karaoke.</li>
+                            <li>The decision of the judges will be final.</li>
+                            <li>No religious Songs.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>5 Solo Song</strong>
+                        <ul>
+                            <li>Solo singing event.</li>
+                            <li>The time limit will be 2 minutes maximum.</li>
+                            <li>Songs must be decent and may be in any language, No religious songs.</li>
+                            <li>Participant can bring own track/karaoke.</li>
+                            <li>The decision of the judges will be final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>6 Group Dance</strong>
+                        <ul>
+                            <li>Each team must consist of a minimum of 2 and maximum of 5 members.</li>
+                            <li>Theme - Cinematic</li>
+                            <li>The time limit will be 3+1 minutes, Fusion is allowed.</li>
+                            <li>Judgement will be based on Choreography, Execution, Expression and Performance, Costume and Co-ordination, No Religious acts.</li>
+                            <li>Participants must bring their own track in a pen drive.</li>
+                            <li>Participants are prohibited from usage of any substances which makes the stage dirty.</li>
+                            <li>Carrying obscene or vulgar music is strictly prohibited.</li>
+                            <li>Maximum 2 teams can participate from each School.</li>
+                            <li>The decision of the judges will be final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>7 Solo Dance</strong>
+                        <ul>
+                            <li>Individual Participation.</li>
+                            <li>Time limit is 4 minutes.</li>
+                            <li>Theme - Free Style, No Religious acts.</li>
+                            <li>Fusion is allowed.</li>
+                            <li>Dancers have to bring their songs on a pen drive.</li>
+                            <li>Participants must be decent and perform gracefully.</li>
+                            <li>The decision of the judges will be final.</li>
+                            <li>Participants are prohibited from usage of any substances which make the stage dirty.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>8 Instrumental Music</strong>
+                        <ul>
+                            <li>Bring your own instruments.</li>
+                            <li>Time limit 3 minutes.</li>
+                            <li>Individual performance only.</li>
+                            <li>The judge's decision will be final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>9 Face Painting</strong>
+                        <ul>
+                            <li>Maximum 2 participants for a team. (1 painting on the other face)</li>
+                            <li>Participants must bring their own materials.</li>
+                            <li>Time limit is 1 hour.</li>
+                            <li>Participants will be judged on the basis of creativity, Artistic Composition, Originality and Clarity of Theme.</li>
+                            <li>The decision of the judges will be final.</li>
+                            <li>Free Theme - (Draw on any Theme)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>10 Cooking Without Fire</strong>
+                        <ul>
+                            <li>Individual Participant only, Time limit 1½ hour.</li>
+                            <li>Participant must prepare dishes without using fire.</li>
+                            <li>Participant are required to bring their own Utensils</li>
+                            <li>Ready-to-cook or precooked items are not allowed.</li>
+                            <li>Presentation and overall creativity will be judged. (Nutrition Value)</li>
+                            <li>Only snacks, salads, desserts, or beverages are allowed.</li>
+                            <li>Name of your dish and ingredients must be displayed.</li>
+                            <li>The decision of the judges will be final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>11 Vegetable Carving</strong>
+                        <ul>
+                            <li>Participant will be given 1 hour to complete their carving.</li>
+                            <li>The participation is individual.</li>
+                            <li>Carving must follow the given theme.</li>
+                            <li>Participants must bring their own vegetables, tools, and accessories.</li>
+                            <li>Use of fire, electric tools, or pre-cut items are not allowed.</li>
+                            <li>The judge's decision will be final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>12 Pot Painting</strong>
+                        <ul>
+                            <li>Pot will be provided.</li>
+                            <li>Only one pot per participant is allowed.</li>
+                            <li>Participants must carry their own painting materials – brushes, paint palette, etc.</li>
+                            <li>Use of fire or spray paint is not allowed.</li>
+                            <li>Time limit: 1 hour.</li>
+                            <li>Only hand painting is allowed – no printed stickers, decals, or readymade decorations.</li>
+                            <li>The pot must remain unbroken and cleanly finished.</li>
+                            <li>The judge's decision will be final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>13 Art and Craft</strong>
+                        <ul>
+                            <li>Only one participant is allowed.</li>
+                            <li>Participant must bring their own materials and tools (papers, colors, brushes, glue, scissors, etc.).</li>
+                            <li>Time duration is 1 hour.</li>
+                            <li>Original work only – copying from the internet or books will lead to disqualification.</li>
+                            <li>Use of mobile phones is not allowed.</li>
+                            <li>The judge's decision will be final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>14 Collage Competition</strong>
+                        <ul>
+                            <li>Minimum 2 members to form a team.</li>
+                            <li>Participants must bring their own materials (magazines, newspapers, coloured papers, glue, etc.).</li>
+                            <li>The theme will be announced on the spot.</li>
+                            <li>Time duration will be 1 hour.</li>
+                            <li>Charts will be provided.</li>
+                            <li>Only handmade collages are allowed.</li>
+                            <li>All work must be creative and original.</li>
+                            <li>Using blades, scissors, fire and paints are strictly not allowed.</li>
+                            <li>The judge's decision will be final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>15 Pencil Sketch</strong>
+                        <ul>
+                            <li>Only one participant is allowed.</li>
+                            <li>The theme will be announced on the spot.</li>
+                            <li>Participant must bring their own drawing materials – pencil, erasers and sharpeners.</li>
+                            <li>Papers will be provided.</li>
+                            <li>Only graphite pencils or charcoal pencils are allowed.</li>
+                            <li>Time duration will be 1 hour.</li>
+                            <li>No obscene sketching should be done.</li>
+                            <li>The sketch must be original and creative according to the theme.</li>
+                            <li>Judges' decision will be final.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>16 Best Out of Waste</strong>
+                        <ul>
+                            <li>Individual Participants.</li>
+                            <li>The time limit will be 1½ hour.</li>
+                            <li>Participants must bring their own waste materials and tools (scissors, glue, tape, etc.).</li>
+                            <li>Only waste or recyclable materials (plastic bottles, newspapers, cardboard, old CDs, etc.) should be used.</li>
+                            <li>Participants must create their model on the spot — no pre-prepared items are allowed.</li>
+                            <li>The item should be useful, creative, and environmentally friendly.</li>
+                            <li>Electric or battery-operated tools are not allowed.</li>
+                            <li>Judges' decision will be final.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="rules-section" style="margin-top:28px;">
+                <h4>Event Coordinators</h4>
+                <ul>
+                    <li><strong>Overall Coordinator:</strong> </li>
+                    <li><strong>Cultural Events:</strong> </li>
+                    <li><strong>Off-Stage Events:</strong> </li>
+                    <li><strong>Discipline & Logistics:</strong> </li>
+                    <li><strong>Registration Desk:</strong> </li>
+                    <li><strong>Hospitality:</strong> </li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <h5>EXCITING CASH PRIZES AND MANY MORE AWAITING</h5>
+        </footer>
+    </div>
+</body>
+</html>
+
+

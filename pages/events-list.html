@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Select Events – Evoka 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20251030">
+  <style>
+    /* Black Glass Background Effect */
+    body {
+      background-image: url('../assets/images/backgrounds/background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);  
+      backdrop-filter: blur(52px);
+      -webkit-backdrop-filter: blur(52px);
+      z-index: -1;
+    }
+    
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin: 16px 0;
+      padding-bottom: 32px;
+      /* Default spacing; extra space only when summary is visible */
+    }
+
+    @media (min-width: 768px) {
+      .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .events-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+    }
+
+    .event-card {
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 60px;
+      backdrop-filter: blur(52px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(105, 88, 88, 0.35);
+    }
+
+    .event-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .event-card.selected {
+      border-color: var(--primary);
+      background: rgba(123, 191, 68, 0.05);
+    }
+
+    .event-card .event-content {
+      flex: 1;
+      margin-right: 12px;
+    }
+
+    .event-card .event-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+      line-height: 1.2;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .event-card .event-description {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.3;
+      margin-bottom: 0;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    }
+
+    .event-card .event-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .participant-controls {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .participant-controls.show {
+      display: flex;
+    }
+
+    .participant-btn {
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--primary);
+      background: rgba(123, 191, 68, 0.1);
+      color: var(--primary);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .participant-btn:hover {
+      background: var(--primary);
+      color: #10210a;
+    }
+
+    .participant-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .participant-count {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .event-price-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #4a90e2;
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      border: 2px solid #357abd;
+    }
+
+    .select-btn {
+      padding: 6px 14px;
+      border: 2px solid #4a90e2;
+      background: transparent;
+      color: #4a90e2;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 11px;
+      transition: all 0.2s ease;
+      min-width: 70px;
+      text-align: center;
+      text-transform: capitalize;
+      letter-spacing: 0.2px;
+    }
+
+    .select-btn:hover {
+      background: #4a90e2;
+      color: #ffffff;
+      border-color: #357abd;
+    }
+
+    .select-btn.selected {
+      background: #4a90e2;
+      color: #ffffff;
+      border-color: #357abd;
+    }
+
+
+
+    .selection-summary {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px 12px 0 0;
+      padding: 16px;
+      margin: 0;
+      display: none;
+      z-index: 1000;
+      box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5);
+      max-height: 50vh;
+      overflow-y: auto;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .selection-summary h3 {
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .summary-totals {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 12px;
+      padding-top: 12px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .summary-row.total {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 8px;
+      padding-top: 8px;
+    }
+
+    .selection-summary.show {
+      display: block;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .delete-event-btn:hover {
+      color: #ff0000 !important;
+      transform: scale(1.2);
+    }
+
+    .user-info {
+      background: rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--primary);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .user-info h3 {
+      margin: 0 0 4px 0;
+      color: var(--primary);
+      font-size: 14px;
+    }
+
+    .user-info p {
+      margin: 2px 0;
+      font-size: 12px;
+      display: inline;
+      margin-right: 12px;
+    }
+
+    .user-info-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* Mobile optimizations */
+    @media (max-width: 767px) {
+      .container {
+        padding: 0 12px;
+      }
+
+      .events-grid {
+        gap: 10px;
+        margin: 12px 0;
+        padding-bottom: 240px;
+      }
+
+      .event-card {
+        padding: 12px;
+        min-height: 70px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .event-card .event-content {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+        padding-right: 90px;
+      }
+
+      .event-card .event-title {
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+
+      .event-card .event-description {
+        font-size: 11px;
+      }
+      
+      .event-card .event-actions {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .select-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+        min-width: 75px;
+      }
+      
+      .event-price-badge {
+        top: 10px;
+        right: 10px;
+        padding: 5px 12px;
+        font-size: 13px;
+      }
+      
+      .participant-controls {
+        gap: 10px;
+        margin-top: 0;
+      }
+      
+      .participant-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+      }
+      
+      .participant-count {
+        font-size: 16px;
+        min-width: 35px;
+      }
+
+      .user-info {
+        padding: 6px 8px;
+        margin-bottom: 10px;
+      }
+
+      .user-info h3 {
+        font-size: 12px;
+      }
+
+      .user-info p {
+        font-size: 10px;
+        margin-right: 6px;
+      }
+    }
+
+    /* Desktop optimizations */
+    @media (min-width: 1200px) {
+      .events-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Add space for the fixed summary only when it's visible */
+    body.has-summary .events-grid {
+      padding-bottom: 220px;
+    }
+
+    /* Wider container for desktop to fit 3-4 columns nicely */
+    @media (min-width: 1024px) {
+      .container {
+        max-width: 1200px;
+      }
+    }
+  </style>
+</head>
+
+<body class="home-page">
+  <main class="container" role="main">
+    <header class="event-header">
+      <div class="event-info">
+        <div class="event-breadcrumb">
+          <a href="../index.html">EVOKE 2K25</a> <span>/</span> <span>Select Events</span>
+        </div>
+        <h1 class="event-title">Choose Your Events</h1>
+        <p class="event-subtitle">Select events and specify number of participants (₹100 per event pre-register<br>₹150 on-spot)</p>
+      </div>
+    </header>
+
+
+
+    <div class="events-grid" id="eventsGrid">
+      <!-- Events will be loaded here -->
+    </div>
+
+    <div class="selection-summary" id="selectionSummary">
+      <h3 style="margin-top: 0;">Selected Events</h3>
+      <div id="summaryItems"></div>
+      <div class="summary-totals">
+        <div class="summary-row">
+          <span>Events Selected:</span>
+          <span id="eventCount">0</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total Amount:</span>
+          <span id="totalAmount">₹0</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 12px; margin-top: 16px;">
+        <button class="btn btn-secondary btn-block" id="clearSelections" style="flex: 1;">
+          Clear All
+        </button>
+        <button class="btn btn-primary btn-block" id="proceedToPayment" style="flex: 2;">
+          Proceed to Register
+        </button>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="../index.html" class="login-link" style="font-size: 14px;">← Back to Home</a>
+    </div>
+  </main>
+
+  <!-- Page Loader -->
+  <div id="pageLoader" class="page-loader" aria-live="polite" aria-busy="false">
+    <div class="spinner-standalone" aria-hidden="true"></div>
+    <div id="loaderText" class="loader-text">Loading events...</div>
+  </div>
+
+  <script type="module">
+    import { db } from '../assets/js/firebase-config.js';
+    import { collection, doc, setDoc, updateDoc, getDoc, getDocs, query, where, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+    // Event data with participant limits
+    const EVENTS_DATA = [
+      {
+        id: 'dumb-charades',
+        title: '1. Dumb Charades',
+        description: 'Team of 2. Act without speaking; 1 minute per word.',
+        minParticipants: 2,
+        maxParticipants: 2
+      },
+      {
+        id: 'general-quiz',
+        title: '2. G.K. Quiz',
+        description: 'Two per team. Prelims written; finals oral.',
+        minParticipants: 2,
+        maxParticipants: 2
+      },
+      {
+        id: 'group-song',
+        title: '3. Group Song',
+        description: '3–5 members. Max 4 mins. Any language.',
+        minParticipants: 3,
+        maxParticipants: 5
+      },
+      {
+        id: 'solo-singing',
+        title: '4. Solo Song',
+        description: 'Individual. Max 2 mins. Any language.',
+        minParticipants: 1,
+        maxParticipants: 1
+      },
+      {
+        id: 'group-dance',
+        title: '5. Group Dance',
+        description: '2–5 members. Theme: Cinematic. 3+1 mins.',
+        minParticipants: 2,
+        maxParticipants: 5
+      },
+      {
+        id: 'solo-dance',
+        title: '6. Solo Dance',
+        description: 'Individual. 4 mins. Free Style.',
+        minParticipants: 1,
+        maxParticipants: 1
+      },
+      {
+        id: 'face-painting',
+        title: '7. Face Painting',
+        description: 'Team of 2 (one paints on the other). 1 hour.',
+        minParticipants: 2,
+        maxParticipants: 2
+      },
+      {
+        id: 'fireless-cooking',
+        title: '8. Cooking Without Fire',
+        description: 'Individual. 1½ hours. No fire; own utensils.',
+        minParticipants: 1,
+        maxParticipants: 1
+      },
+      {
+        id: 'vegetable-carving',
+        title: '9. Vegetable Carving',
+        description: 'Individual. 1 hour. Bring own veggies and tools.',
+        minParticipants: 1,
+        maxParticipants: 1
+      },
+      {
+        id: 'pot-painting',
+        title: '10. Pot Painting',
+        description: 'Pot provided. 1 hour. Only hand painting.',
+        minParticipants: 1,
+        maxParticipants: 1
+      },
+      {
+        id: 'art-craft',
+        title: '11. Art and Craft',
+        description: 'Individual. Bring own materials. 1 hour.',
+        minParticipants: 1,
+        maxParticipants: 1
+      },
+      {
+        id: 'collage-competition',
+        title: '12. Collage Competition',
+        description: 'Team of minimum 2. Theme on the spot. 1 hour.',
+        minParticipants: 2,
+        maxParticipants: 10
+      },
+      {
+        id: 'pencil-sketch',
+        title: '13. Pencil Sketch',
+        description: 'Individual. Theme on the spot. Papers provided.',
+        minParticipants: 1,
+        maxParticipants: 1
+      },
+      {
+        id: 'best-waste',
+        title: '14. Best Out of Waste',
+        description: 'Individual. 1½ hours. Only waste/recyclable materials.',
+        minParticipants: 1,
+        maxParticipants: 1
+      },
+      {
+        id: 'fashion-show',
+        title: '15. Fashion Show (Indian Culture)',
+        description: 'Individual. Modest attire, props allowed. 30s on stage.',
+        minParticipants: 1,
+        maxParticipants: 1
+      },
+      {
+        id: 'solo-instrumental',
+        title: '16. Instrumental Music',
+        description: 'Individual. Bring your own instruments. 3 minutes.',
+        minParticipants: 1,
+        maxParticipants: 1
+      }
+    ];
+
+    let selectedEvents = {};
+    let userContext = null;
+
+    // DOM elements
+    const eventsGrid = document.getElementById('eventsGrid');
+    const selectionSummary = document.getElementById('selectionSummary');
+    const summaryItems = document.getElementById('summaryItems');
+    const proceedBtn = document.getElementById('proceedToPayment');
+    const pageLoader = document.getElementById('pageLoader');
+    const userInfo = document.getElementById('userInfo');
+
+    function showLoader(message) {
+      document.getElementById('loaderText').textContent = message || 'Loading...';
+      pageLoader.classList.add('show');
+    }
+
+    function hideLoader() {
+      pageLoader.classList.remove('show');
+    }
+
+    // Get user context from session storage
+    function getUserContext() {
+      try {
+        const token = sessionStorage.getItem('lastToken');
+        const name = sessionStorage.getItem('lastName');
+        const college = sessionStorage.getItem('lastCollege');
+
+        if (token && name) {
+          return { token, name, college: college || 'N/A' };
+        }
+        return null;
+      } catch (e) {
+        console.warn('Unable to get user context:', e);
+        return null;
+      }
+    }
+
+    // Check if user already submitted events; if yes, skip this page
+    function enforceSubmissionLock() {
+      try {
+        const token = sessionStorage.getItem('lastToken');
+        const lockedToken = sessionStorage.getItem('events_submitted_token');
+        if (token && lockedToken && token === lockedToken) {
+          // Already submitted, redirect to success page
+          window.location.replace('success.html');
+          return true;
+        }
+      } catch (e) {
+        console.warn('Lock check failed:', e);
+      }
+      return false;
+    }
+
+    // Display user information
+    function displayUserInfo() {
+      userContext = getUserContext();
+      if (!userContext) {
+        // No user context - this is first time, allow them to proceed
+        console.log('No user context found - new user flow');
+      }
+    }
+
+    // Render events grid
+    function renderEvents() {
+      eventsGrid.innerHTML = '';
+
+      EVENTS_DATA.forEach(event => {
+        const eventCard = document.createElement('div');
+        eventCard.className = 'event-card';
+        eventCard.dataset.eventId = event.id;
+
+        const participantInfo = event.minParticipants === event.maxParticipants
+          ? `${event.maxParticipants} member${event.maxParticipants > 1 ? 's' : ''}`
+          : `${event.minParticipants}-${event.maxParticipants} members`;
+
+        eventCard.innerHTML = `
+          <div class="event-price-badge">₹100</div>
+          <div class="event-content">
+            <div class="event-title">${event.title}</div>
+            <div class="event-description">${event.description} (${participantInfo})</div>
+          </div>
+          <div class="event-actions">
+            <button class="select-btn" data-event-id="${event.id}">Select</button>
+            <div class="participant-controls" data-event-id="${event.id}">
+              <button class="participant-btn minus" data-action="minus">−</button>
+              <span class="participant-count">${event.minParticipants}</span>
+              <button class="participant-btn plus" data-action="plus">+</button>
+            </div>
+          </div>
+        `;
+
+        // Add select button handler
+        const selectBtn = eventCard.querySelector('.select-btn');
+        selectBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleEventSelection(event.id);
+        });
+
+        // Add participant control handlers
+        const participantControls = eventCard.querySelector('.participant-controls');
+        const minusBtn = participantControls.querySelector('.minus');
+        const plusBtn = participantControls.querySelector('.plus');
+        const countSpan = participantControls.querySelector('.participant-count');
+
+        minusBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateParticipantCount(event.id, -1);
+        });
+
+        plusBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateParticipantCount(event.id, 1);
+        });
+
+        eventsGrid.appendChild(eventCard);
+      });
+    }
+
+    // Toggle event selection
+    function toggleEventSelection(eventId) {
+      console.log('Toggling event:', eventId);
+      const event = EVENTS_DATA.find(e => e.id === eventId);
+      const eventCard = document.querySelector(`.event-card[data-event-id="${eventId}"]`);
+      const selectBtn = eventCard.querySelector('.select-btn');
+      const participantControls = eventCard.querySelector('.participant-controls');
+
+      if (selectedEvents[eventId]) {
+        // Deselect event
+        delete selectedEvents[eventId];
+        eventCard.classList.remove('selected');
+        selectBtn.classList.remove('selected');
+        selectBtn.textContent = 'Select';
+        participantControls.classList.remove('show');
+      } else {
+        // Select event with minimum participants
+        selectedEvents[eventId] = event.minParticipants;
+        eventCard.classList.add('selected');
+        selectBtn.classList.add('selected');
+        selectBtn.textContent = 'Selected';
+        participantControls.classList.add('show');
+
+        // Update the count display
+        const countSpan = participantControls.querySelector('.participant-count');
+        countSpan.textContent = event.minParticipants;
+
+        // Update button states
+        updateParticipantButtons(eventId);
+      }
+
+      console.log('Current selected events:', selectedEvents);
+      updateSelectionSummary();
+    }
+
+    // Update participant count
+    function updateParticipantCount(eventId, delta) {
+      const event = EVENTS_DATA.find(e => e.id === eventId);
+      if (!selectedEvents[eventId]) return;
+
+      const newCount = selectedEvents[eventId] + delta;
+
+      // Validate against min/max
+      if (newCount < event.minParticipants || newCount > event.maxParticipants) {
+        return;
+      }
+
+      selectedEvents[eventId] = newCount;
+
+      // Update UI
+      const eventCard = document.querySelector(`.event-card[data-event-id="${eventId}"]`);
+      const countSpan = eventCard.querySelector('.participant-count');
+      countSpan.textContent = newCount;
+
+      updateParticipantButtons(eventId);
+      updateSelectionSummary();
+    }
+
+    // Update participant button states
+    function updateParticipantButtons(eventId) {
+      const event = EVENTS_DATA.find(e => e.id === eventId);
+      const eventCard = document.querySelector(`.event-card[data-event-id="${eventId}"]`);
+      const participantControls = eventCard.querySelector('.participant-controls');
+      const minusBtn = participantControls.querySelector('.minus');
+      const plusBtn = participantControls.querySelector('.plus');
+
+      const currentCount = selectedEvents[eventId];
+
+      minusBtn.disabled = currentCount <= event.minParticipants;
+      plusBtn.disabled = currentCount >= event.maxParticipants;
+    }
+
+    // Update selection summary
+    function updateSelectionSummary() {
+      const hasSelections = Object.keys(selectedEvents).length > 0;
+
+      if (hasSelections) {
+        selectionSummary.classList.add('show');
+        document.body.classList.add('has-summary');
+
+        let summaryHTML = '';
+
+        Object.entries(selectedEvents).forEach(([eventId, participantCount]) => {
+          const event = EVENTS_DATA.find(e => e.id === eventId);
+
+          summaryHTML += `
+            <div class="summary-item">
+              <span>${event.title}</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span>${participantCount} participant${participantCount > 1 ? 's' : ''}</span>
+                <button class="delete-event-btn" data-event-id="${eventId}" style="background: transparent; border: none; color: #ff4444; cursor: pointer; font-size: 18px; padding: 4px; line-height: 1;">×</button>
+              </div>
+            </div>
+          `;
+        });
+
+        summaryItems.innerHTML = summaryHTML;
+        
+        // Add delete button handlers
+        document.querySelectorAll('.delete-event-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const eventId = btn.getAttribute('data-event-id');
+            toggleEventSelection(eventId);
+          });
+        });
+
+        // Calculate event count and total amount
+        const eventCount = Object.keys(selectedEvents).length;
+        const totalAmount = eventCount * 100;
+
+        // Update DOM elements
+        document.getElementById('eventCount').textContent = eventCount;
+        document.getElementById('totalAmount').textContent = `₹${totalAmount}`;
+
+        // Store in sessionStorage
+        sessionStorage.setItem('eventCount', String(eventCount));
+        sessionStorage.setItem('totalAmount', String(totalAmount));
+
+      } else {
+        selectionSummary.classList.remove('show');
+        document.body.classList.remove('has-summary');
+
+        // Reset values when no events selected
+        sessionStorage.setItem('eventCount', '0');
+        sessionStorage.setItem('totalAmount', '0');
+      }
+    }
+
+    // Proceed to payment
+    async function proceedToPayment() {
+      console.log('Submit button clicked!');
+      console.log('Selected events:', selectedEvents);
+
+      if (Object.keys(selectedEvents).length === 0) {
+        console.warn('No events selected');
+        alert('Please select at least one event.');
+        return;
+      }
+
+      if (!userContext) {
+        console.log('No user context - storing selections and redirecting to registration');
+        // Store selections for after registration
+        sessionStorage.setItem('pendingEventSelections', JSON.stringify(selectedEvents));
+        sessionStorage.setItem('eventCount', String(Object.keys(selectedEvents).length));
+        sessionStorage.setItem('totalAmount', String(Object.keys(selectedEvents).length * 100));
+
+        // Redirect to registration
+        window.location.href = 'register.html';
+        return;
+      }
+
+      console.log('User context:', userContext);
+      showLoader('Saving your event selections...');
+
+      try {
+        // Prepare event selections with participant counts
+        const eventSelections = [];
+
+        Object.entries(selectedEvents).forEach(([eventId, participantCount]) => {
+          const event = EVENTS_DATA.find(e => e.id === eventId);
+
+          eventSelections.push({
+            eventId,
+            eventTitle: event.title,
+            participantCount,
+            minParticipants: event.minParticipants,
+            maxParticipants: event.maxParticipants
+          });
+        });
+
+        console.log('Event selections prepared:', eventSelections);
+
+        // Find user by shortId
+        const registrationsRef = collection(db, 'registrations');
+        const querySnapshot = await getDocs(query(registrationsRef, where('shortId', '==', userContext.token)));
+        console.log('Query snapshot:', querySnapshot);
+
+        if (querySnapshot.empty) {
+          throw new Error('User registration not found. Please register again.');
+        }
+
+        // Use the first matching document
+        const userDocData = querySnapshot.docs[0];
+        console.log('User document found:', userDocData.id);
+
+        // Calculate total amount and event count
+        const eventCount = Object.keys(selectedEvents).length;
+        const totalAmount = eventCount * 100;
+        console.log('Event count:', eventCount);
+        console.log('Total amount calculated:', totalAmount);
+
+        // Ensure sessionStorage has the latest values
+        sessionStorage.setItem('eventCount', String(eventCount));
+        sessionStorage.setItem('totalAmount', String(totalAmount));
+
+        // Persist selections in eventSelections (rules allow create here)
+        const eventSelectionsRef = collection(db, 'eventSelections');
+        const selectionDocRef = doc(eventSelectionsRef, `${userContext.token}_${Date.now()}`);
+        console.log('Creating selection document:', selectionDocRef.id);
+        await setDoc(selectionDocRef, {
+          userId: userDocData.id,
+          userToken: userContext.token,
+          selections: eventSelections,
+          eventCount: eventCount,
+          totalAmount: totalAmount,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
+          paymentStatus: 'pending'
+        });
+        console.log('Selection document created successfully');
+
+        // Best-effort: link selection to registration (ignore if denied by rules)
+        try {
+          console.log('Attempting to update registration document');
+          await updateDoc(userDocData.ref, {
+            hasSelectedEvents: true,
+            eventSelectionId: selectionDocRef.id,
+            eventSelectionTimestamp: serverTimestamp(),
+            eventCount: eventCount,
+            totalAmount: totalAmount
+          });
+          console.log('Registration document updated successfully');
+        } catch (linkErr) {
+          console.warn('Linking selection to registration was skipped due to rules:', linkErr?.message || linkErr);
+        }
+
+        // Store selections in session storage for payment page
+        sessionStorage.setItem('eventSelections', JSON.stringify(eventSelections));
+        sessionStorage.setItem('totalAmount', String(totalAmount));
+        sessionStorage.setItem('payment_user_context', JSON.stringify({
+          name: userContext.name,
+          token: userContext.token,
+          college: userContext.college
+        }));
+        console.log('Session storage updated');
+
+        hideLoader();
+
+        // Set submission lock so user cannot come back and resubmit
+        try {
+          sessionStorage.setItem('events_submitted_token', userContext.token);
+          sessionStorage.setItem('events_submitted_time', String(Date.now()));
+        } catch (e) { console.warn('Failed to set submission lock:', e); }
+
+        // Redirect to final step page
+        console.log('Redirecting to success page');
+        window.location.href = 'success.html';
+
+      } catch (error) {
+        console.error('Error saving event selections:', {
+          message: error?.message || String(error),
+          code: error?.code,
+          stack: error?.stack
+        });
+        hideLoader();
+        alert('Failed to save event selections. Please try again. Error: ' + (error?.message || 'Unknown error'));
+      }
+    }
+
+    // Initialize page
+    function init() {
+      console.log('Initializing events page...');
+
+      // If already submitted, redirect to success immediately
+      if (enforceSubmissionLock()) return;
+
+      displayUserInfo();
+      renderEvents();
+
+      // Check if there are pending selections from a previous visit
+      try {
+        const pendingSelections = sessionStorage.getItem('pendingEventSelections');
+        if (pendingSelections) {
+          selectedEvents = JSON.parse(pendingSelections);
+          console.log('Restored pending selections:', selectedEvents);
+
+          // Update UI to reflect restored selections
+          Object.keys(selectedEvents).forEach(eventId => {
+            const eventCard = document.querySelector(`.event-card[data-event-id="${eventId}"]`);
+            if (eventCard) {
+              const selectBtn = eventCard.querySelector('.select-btn');
+              const participantControls = eventCard.querySelector('.participant-controls');
+              const countSpan = participantControls.querySelector('.participant-count');
+
+              eventCard.classList.add('selected');
+              selectBtn.classList.add('selected');
+              selectBtn.textContent = 'Selected';
+              participantControls.classList.add('show');
+              countSpan.textContent = selectedEvents[eventId];
+              updateParticipantButtons(eventId);
+            }
+          });
+
+          updateSelectionSummary();
+        }
+      } catch (e) {
+        console.warn('Failed to restore pending selections:', e);
+      }
+
+      // Add proceed button handler
+      if (proceedBtn) {
+        console.log('Submit button found, adding click handler');
+        proceedBtn.addEventListener('click', proceedToPayment);
+        console.log('Click handler attached successfully');
+      } else {
+        console.error('Submit button not found!');
+      }
+      
+      // Add clear all button handler
+      const clearBtn = document.getElementById('clearSelections');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          if (Object.keys(selectedEvents).length === 0) {
+            return;
+          }
+          
+          // Clear all selections
+          Object.keys(selectedEvents).forEach(eventId => {
+            const eventCard = document.querySelector(`.event-card[data-event-id="${eventId}"]`);
+            if (eventCard) {
+              const selectBtn = eventCard.querySelector('.select-btn');
+              const participantControls = eventCard.querySelector('.participant-controls');
+              
+              eventCard.classList.remove('selected');
+              selectBtn.classList.remove('selected');
+              selectBtn.textContent = 'Select';
+              participantControls.classList.remove('show');
+            }
+          });
+          
+          selectedEvents = {};
+          updateSelectionSummary();
+          
+          // Clear pending selections from storage
+          try {
+            sessionStorage.removeItem('pendingEventSelections');
+          } catch (e) {
+            console.warn('Failed to clear pending selections:', e);
+          }
+        });
+      }
+
+      // Handle back-forward cache returns: re-check lock and redirect if needed
+      window.addEventListener('pageshow', () => {
+        enforceSubmissionLock();
+      });
+    }
+
+    // Global error handler
+    window.addEventListener('error', (e) => {
+      console.error('Global error:', e.error);
+      console.error('Error message:', e.message);
+      console.error('Error filename:', e.filename);
+      console.error('Error line:', e.lineno);
+    });
+
+    // Start the application
+    try {
+      init();
+    } catch (e) {
+      console.error('Failed to initialize:', e);
+      alert('Failed to load page. Please refresh and try again.');
+    }
+  </script>
+</body>
+
+</html>
+
