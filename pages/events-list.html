@@ -839,7 +839,7 @@
         sessionStorage.setItem('eventCount', String(Object.keys(selectedEvents).length));
         sessionStorage.setItem('totalAmount', String(Object.keys(selectedEvents).length * 100));
 
-        // Redirect to registration
+        // Redirect to registration - user will come back here after registering
         window.location.href = 'register.html';
         return;
       }
@@ -906,7 +906,7 @@
 
         // Best-effort: link selection to registration (ignore if denied by rules)
         try {
-          console.log('Attempting to update registration document');
+          console.log('Attempting to update registration document with event selection metadata');
           await updateDoc(userDocData.ref, {
             hasSelectedEvents: true,
             eventSelectionId: selectionDocRef.id,
@@ -914,9 +914,11 @@
             eventCount: eventCount,
             totalAmount: totalAmount
           });
-          console.log('Registration document updated successfully');
+          console.log('Registration document updated successfully with event metadata');
         } catch (linkErr) {
-          console.warn('Linking selection to registration was skipped due to rules:', linkErr?.message || linkErr);
+          console.warn('Could not update registration document (this is okay, event data is saved in eventSelections collection):', linkErr?.message || linkErr);
+          // This is not a critical error - the event selections are already saved in the eventSelections collection
+          // The admin panel will still be able to see the events via the eventSelections collection
         }
 
         // Store selections in session storage for payment page
@@ -937,8 +939,8 @@
           sessionStorage.setItem('events_submitted_time', String(Date.now()));
         } catch (e) { console.warn('Failed to set submission lock:', e); }
 
-        // Redirect to final step page
-        console.log('Redirecting to success page');
+        // Redirect to payment page
+        console.log('Redirecting to payment page');
         window.location.href = 'success.html';
 
       } catch (error) {
@@ -987,6 +989,11 @@
           });
 
           updateSelectionSummary();
+          // If the user has returned from registration and we have context, auto-proceed
+          if (getUserContext()) {
+            console.log('User context present with pending selections — auto-submitting to save and continue');
+            proceedToPayment();
+          }
         }
       } catch (e) {
         console.warn('Failed to restore pending selections:', e);

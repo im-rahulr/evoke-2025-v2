@@ -631,6 +631,17 @@
           <button id="testClose" class="btn btn-primary" type="button">Close</button>
         </div>
       </div>
+
+      <!-- View Details Modal -->
+      <div id="viewModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="viewTitle" style="display:none;">
+        <div class="modal-card" style="max-width:720px; width:90vw;">
+          <div id="viewTitle" class="modal-title">Registration Details</div>
+          <div id="viewBody" class="modal-text" style="text-align:left; max-height:60vh; overflow:auto;"></div>
+          <div class="modal-actions" style="display:flex; justify-content:flex-end; gap:8px; margin-top:12px;">
+            <button id="viewClose" class="btn btn-primary" type="button">Close</button>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
   <br>
@@ -1437,6 +1448,7 @@
             }
 
             const actionsHtml = `
+              <button class="btn btn-primary btn-sm" data-action="view" data-id="${d.id}" aria-label="View details">View</button>
               <button class="btn btn-secondary btn-sm" data-action="delete" data-id="${d.id}" aria-label="Delete user">Delete</button>
               ${d.paymentConfirmed !== true ? `<button class="btn btn-primary btn-sm" data-action="confirm-payment" data-id="${d.id}" data-username="${escapeHtml(d.username || '')}" aria-label="Confirm payment">Confirm Payment</button>` : ''}
             `;
@@ -1518,6 +1530,84 @@
                 const msg = (err && (err.message || err.code)) ? (err.message || err.code) : 'Unknown error';
                 alert('Failed to confirm payment. ' + msg);
               }
+            });
+          });
+
+          // Wire up view buttons
+          const viewModal = document.getElementById('viewModal');
+          const viewBody = document.getElementById('viewBody');
+          const viewClose = document.getElementById('viewClose');
+          function closeView(){ if (viewModal) viewModal.style.display = 'none'; }
+          if (viewClose) viewClose.onclick = closeView;
+          if (viewModal) viewModal.addEventListener('click', (e)=>{ if (e.target === viewModal) closeView(); });
+
+          tbody.querySelectorAll('button[data-action="view"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              const id = e.currentTarget.getAttribute('data-id');
+              if (!id) return;
+              const rec = all.find(x => x.id === id);
+              if (!rec) { alert('Record not found.'); return; }
+
+              // Resolve events list similar to table rendering
+              let eventsArray = [];
+              if (rec.eventSelections && Array.isArray(rec.eventSelections) && rec.eventSelections.length > 0) {
+                eventsArray = rec.eventSelections;
+              } else if (rec.shortId && __eventSelectionsByToken && __eventSelectionsByToken.has(String(rec.shortId))) {
+                const es = __eventSelectionsByToken.get(String(rec.shortId));
+                if (es && Array.isArray(es.selections)) eventsArray = es.selections;
+              } else if (rec.events && Array.isArray(rec.events)) {
+                eventsArray = rec.events;
+              } else if (rec.selectedEvents && Array.isArray(rec.selectedEvents)) {
+                eventsArray = rec.selectedEvents;
+              }
+
+              const eventCount = (rec.eventCount != null) ? Number(rec.eventCount) || 0 : eventsArray.length;
+              const totalAmount = (rec.totalAmount != null) ? (Number(rec.totalAmount) || 0) : (eventCount * 100);
+
+              const createdAt = rec.createdAt?.toDate ? rec.createdAt.toDate().toLocaleString() : '';
+              const paymentMode = rec.paymentMode ? String(rec.paymentMode) : '—';
+              const paymentConfirmed = rec.paymentConfirmed === true ? 'Yes' : 'No';
+
+              const eventsHtml = eventsArray.length ? (
+                `<table style="width:100%; border-collapse:collapse; font-size:13px;">
+                  <thead>
+                    <tr>
+                      <th style="text-align:left; border-bottom:1px solid var(--line); padding:6px 4px;">Event</th>
+                      <th style="text-align:center; border-bottom:1px solid var(--line); padding:6px 4px;">Team Size</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${eventsArray.map(ev => {
+                      const name = ev?.eventTitle || ev?.eventId || ev?.name || ev?.title || String(ev);
+                      const size = ev?.participantCount || ev?.quantity || ev?.teamSize || 1;
+                      return `<tr><td style="padding:6px 4px; border-bottom:1px dashed var(--line);">${escapeHtml(String(name))}</td><td style="text-align:center; padding:6px 4px; border-bottom:1px dashed var(--line);">${size}</td></tr>`;
+                    }).join('')}
+                  </tbody>
+                </table>`
+              ) : '<div style="color: var(--muted);">No events found</div>';
+
+              const html = `
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                  <div><strong>Name:</strong> ${escapeHtml(rec.username || '')}</div>
+                  <div><strong>Token:</strong> ${escapeHtml(rec.shortId || 'N/A')}</div>
+                  <div><strong>Phone:</strong> ${escapeHtml(rec.phone || '—')}</div>
+                  <div><strong>Class:</strong> ${escapeHtml(rec.course || '')}</div>
+                  <div><strong>School:</strong> ${escapeHtml(rec.college || '')}</div>
+                  <div><strong>Created:</strong> ${escapeHtml(createdAt)}</div>
+                  <div><strong>Payment Mode:</strong> ${escapeHtml(paymentMode)}</div>
+                  <div><strong>Payment Confirmed:</strong> ${paymentConfirmed}</div>
+                  <div><strong>Total Events:</strong> ${eventCount}</div>
+                  <div><strong>Total Amount:</strong> ₹${totalAmount}</div>
+                </div>
+                <hr style="border-color: var(--line); margin:12px 0;">
+                <div style="margin-top:8px;">
+                  <h4 style="margin:0 0 8px;">Events</h4>
+                  ${eventsHtml}
+                </div>
+              `;
+
+              if (viewBody) viewBody.innerHTML = html;
+              if (viewModal) viewModal.style.display = 'block';
             });
           });
         } catch (wireErr) {

@@ -1040,8 +1040,18 @@ Please confirm my payment status.`;
       // Check if user has valid context
       const userContext = getUserContext();
       if (!userContext) {
-        alert('Please complete registration and event selection first.');
+        alert('Please register first to get your token number.');
         window.location.href = 'register.html';
+        return;
+      }
+      
+      // Check if user has selected events
+      const eventCount = sessionStorage.getItem('eventCount');
+      const totalAmount = sessionStorage.getItem('totalAmount');
+      
+      if (!eventCount || eventCount === '0' || !totalAmount || totalAmount === '0') {
+        alert('Please select events before proceeding to payment.');
+        window.location.href = 'events-list.html';
         return;
       }
 

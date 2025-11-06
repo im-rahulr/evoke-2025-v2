@@ -265,13 +265,8 @@
   </div>
 
   <script type="module">
-    // Check if user has selected events before allowing registration
-    const hasPendingSelections = sessionStorage.getItem('pendingEventSelections');
-    if (!hasPendingSelections) {
-      // No events selected, redirect to events page
-      alert('Please select events first before registering.');
-      window.location.href = 'events-list.html';
-    }
+    // Allow registration with or without pending event selections
+    // Users can register first, then select events later
     
     import { db } from '../assets/js/firebase-config.js';
     import { collection, doc, setDoc, addDoc, serverTimestamp, getDocs, query, where, limit } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
@@ -507,20 +502,18 @@
           sessionStorage.setItem('lastCourse', payload.course || '');
         } catch {}
         
-        // Check if there are pending event selections
-        const hasPendingSelections = sessionStorage.getItem('pendingEventSelections');
+        // After successful registration, always redirect to event selection
+        // This ensures users select events before payment
+        console.log('Registration successful, redirecting to event selection');
         
-        if (hasPendingSelections) {
-          // User came from events page, redirect to payment page
-          console.log('Redirecting to payment page with user context');
-          window.location.href = 'payment.html';
-        } else {
-          // Optional celebration before redirect to success
-          playSuccessSound();
-          burstEmojis();
-          // Show success modal or redirect to success page
-          window.location.href = 'success.html';
-        }
+        // Optional celebration
+        playSuccessSound();
+        burstEmojis();
+        
+        // Small delay to show celebration, then redirect to events page
+        setTimeout(() => {
+          window.location.href = 'events-list.html';
+        }, 1500);
       } catch (err) {
         console.error('Registration error:', err);
         
