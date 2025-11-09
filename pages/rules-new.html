@@ -139,6 +139,32 @@ main {
     top: 0;
 }
 
+/* Button styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 200px;
+}
+
+.btn-secondary {
+    background: #31302F;
+    color: #B3B3B3;
+    border: 1px solid #262524;
+}
+
+.btn-secondary:hover {
+    background: #40403F;
+    color: #fff;
+}
+
 footer {
     text-align: center;
     margin-top: 30px;
@@ -188,6 +214,23 @@ footer h5 {
     .rules-section ul li {
         font-size: 0.9em;
     }
+
+    /* Table responsiveness */
+    .rules-section table {
+        font-size: 0.85em;
+    }
+
+    .rules-section table th,
+    .rules-section table td {
+        padding: 6px;
+        white-space: nowrap;
+    }
+
+    /* Make table horizontally scrollable */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
 @media (max-width: 480px) {
@@ -236,6 +279,16 @@ footer h5 {
 
     .rules-section ul li::before {
         left: 0;
+    }
+
+    /* Table responsiveness for very small screens */
+    .rules-section table {
+        font-size: 0.8em;
+    }
+
+    .rules-section table th,
+    .rules-section table td {
+        padding: 4px;
     }
 }
     </style>
@@ -485,6 +538,120 @@ footer h5 {
             <ul>
                 <li><strong>Overall Coordinator:</strong> Mrs. Lorna Isaiah (Contact: 9481027606)</li>
             </ul>
+            <div class="table-container">
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid #fff; padding: 8px; background-color: rgba(255, 215, 0, 0.1); color: #ffd700;">Sl.no</th>
+                        <th style="border: 1px solid #fff; padding: 8px; background-color: rgba(255, 215, 0, 0.1); color: #ffd700;">Event Name</th>
+                        <th style="border: 1px solid #fff; padding: 8px; background-color: rgba(255, 215, 0, 0.1); color: #ffd700;">Teacher In-Charge</th>
+                        <th style="border: 1px solid #fff; padding: 8px; background-color: rgba(255, 215, 0, 0.1); color: #ffd700;">Assistant Teacher</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">1</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Dumb Charades</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Sujatha<br>9945832334</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mr. Ashwin<br>8861824718</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">2</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">G.K. Quiz</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Crystal Monica<br>6360842608</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mr. Jibin<br>9916718852</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">3</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Fashion Show</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Shabeeba<br>9447175625</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mr. Muniraj<br>8748898011</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">4</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Group Song</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Kalaivani<br>7259529611</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Radha Bai<br>9844722299</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">5</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Solo Song</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Kalaivani<br>7259529611</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Radha Bai<br>9844722299</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">6</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Group Dance</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Bhakthavatsala<br>7022039323</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mr. Eliezer<br>9940132453</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">7</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Solo Dance</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Bhakthavatsala<br>7022039323</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mr. Eliezer<br>9940132453</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">8</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Intrumental Music</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Bhakthavatsala<br>7022039323</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mr. Eliezer<br>9940132453</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">9</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Face Painting</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Mohana Priya<br>9900082508</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mr. Ashwin<br>8861824718</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">10</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Cooking Without Fire</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mr. Raja Fernandez<br>9731593497</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Pearlin<br>9686628239</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">11</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Vegetable Carving</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Hema Roselin<br>7795412459</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mr. Rajshekar<br>9663771605</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">12</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Pot Painting</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Ms. Lavina<br>9480440884</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Ashwini<br>9886592910</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">13</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Art & Craft</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Hema C<br>7019376951</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Preethi M A<br>8970237990</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">14</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Collage Competition</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Ellen Baskar<br>9632726031</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Stella Dass<br>9901809795</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">15</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Pencil Sketch</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Ms. Mani Bharathi<br>9003886955</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Glory<br>8892605640</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #fff; padding: 8px; text-align: center; color: #eee;">16</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Best Out of Waste</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Ms. Lavina<br>9480440884</td>
+                        <td style="border: 1px solid #fff; padding: 8px; color: #eee;">Mrs. Noreen<br>9176913261</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="../index.html" class="btn btn-secondary" style="margin-top: 20px;">← Back to Home</a>
+            </div>
         </div>
         </main>
 
