@@ -6,7 +6,7 @@ service cloud.firestore {
     match /registrations/{docId} {
       allow read: if true;
       allow create: if
-        request.time < timestamp.date(2025, 11, 21) &&
+        request.time < timestamp.date(2025, 11, 30) &&
         request.resource.data.username is string &&
         request.resource.data.username.size() >= 2 &&
         request.resource.data.course in ['10th Class'] &&
@@ -16,7 +16,7 @@ service cloud.firestore {
         request.resource.data.phone.matches('^\\d{10,15}$') &&
         request.resource.data.shortId is string &&
         request.resource.data.shortId.matches('^\\d{3}$') &&
-        request.resource.data.ip is string &&
+        (request.resource.data.ip == null || request.resource.data.ip is string) &&
         request.resource.data.keys().hasOnly(['username','course','college','phone','ip','shortId','createdAt','hasSelectedEvents','eventSelectionId']);
 
       /* allow updating payment, RSVP, event selection and soft-delete fields (validate only changed keys) */

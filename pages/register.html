@@ -417,11 +417,12 @@
       submitBtn.setAttribute('aria-busy','true');
       if (btnLabel) btnLabel.textContent = 'Submitting…';
       showLoader('Submitting your registration…');
+      let ip = 'unknown';
       try {
         // Parallel: IP fetch
         const ipPromise = getIpFast();
         const ipValue = await ipPromise;
-        let ip = ipValue || 'unknown';
+        if (ipValue) ip = ipValue;
         
         // Additional fallback: try to get IP from headers if available
         if (ip === 'unknown') {
