@@ -37,6 +37,7 @@
   to = "/register.html"
   status = 200
 
+<<<<<<< HEAD
 [[redirects]]
   from = "/events-list"
   to = "/pages/events-list.html"
@@ -92,4 +93,6 @@
   to = "/pages/rules-new.html"
   status = 200
 
+=======
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 

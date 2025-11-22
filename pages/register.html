@@ -46,9 +46,15 @@
       left: 0;
       width: 100%;
       height: 100%;
+<<<<<<< HEAD
       background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(3px);
       -webkit-backdrop-filter: blur(3px);
+=======
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     }
 
     /* Black Glass Form Effect */
@@ -177,12 +183,20 @@
     })
   </script>
   
+<<<<<<< HEAD
   <meta name="description" content="Register for Evoka 2025 at Lowry Memorial High School.">
+=======
+  <meta name="description" content="Register for Evoka 2025 at Lowry Adventist College.">
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
   <!-- Open Graph / WhatsApp / Facebook -->
   <meta property="og:site_name" content="Evoka 2025">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Register • Evoka 2025">
+<<<<<<< HEAD
   <meta property="og:description" content="Register your account for Evoka 2025 at Lowry Memorial High School.">
+=======
+  <meta property="og:description" content="Register your account for Evoka 2025 at Lowry Adventist College.">
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
   <meta property="og:url" content="https://lac-chess.netlify.app/register.html">
   <meta property="og:image" content="https://lac-chess.netlify.app/images/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -190,7 +204,11 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Register • Evoka 2025">
+<<<<<<< HEAD
   <meta name="twitter:description" content="Register for Evoka 2025 at Lowry Memorial High School.">
+=======
+  <meta name="twitter:description" content="Register for Evoka 2025 at Lowry Adventist College.">
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
   <meta name="twitter:image" content="https://lac-chess.netlify.app/images/og-image.jpg">
 </head>
 <body>
@@ -214,8 +232,13 @@
     <form class="form-card" action="#" method="post" novalidate>
       <div class="form-grid">
         <div class="form-group">
+<<<<<<< HEAD
           <label for="username">Team Leader Name</label>
           <input id="username" name="username" class="input" type="text" placeholder="Team Leader's Name" required minlength="2">
+=======
+          <label for="username">Name</label>
+          <input id="username" name="username" class="input" type="text" placeholder="Your Name" required minlength="2">
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         </div>
         <div class="form-group">
           <label for="course">Class</label>
@@ -245,7 +268,11 @@
   </main>
 
   <footer class="footer" role="contentinfo">
+<<<<<<< HEAD
     <small>Developed by <a href="https://hyperlabs.netlify.app/" target="_blank" rel="noopener">HyperLabs</a></small>
+=======
+    <small>Designed by <a class="login-link" href="https://codecraft-team.netlify.app/" target="_blank" rel="noopener">CodeCraft</a></small>
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
   </footer>
 
   <!-- Page Loader Overlay -->
@@ -265,9 +292,12 @@
   </div>
 
   <script type="module">
+<<<<<<< HEAD
     // Allow registration with or without pending event selections
     // Users can register first, then select events later
     
+=======
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     import { db } from '../assets/js/firebase-config.js';
     import { collection, doc, setDoc, addDoc, serverTimestamp, getDocs, query, where, limit } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
@@ -420,11 +450,19 @@
       submitBtn.setAttribute('aria-busy','true');
       if (btnLabel) btnLabel.textContent = 'Submitting…';
       showLoader('Submitting your registration…');
+<<<<<<< HEAD
+=======
+      let ip = 'unknown';
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       try {
         // Parallel: IP fetch
         const ipPromise = getIpFast();
         const ipValue = await ipPromise;
+<<<<<<< HEAD
         let ip = ipValue || 'unknown';
+=======
+        if (ipValue) ip = ipValue;
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         
         // Additional fallback: try to get IP from headers if available
         if (ip === 'unknown') {
@@ -494,13 +532,18 @@
         console.log('Registration stored successfully with Token No:', shortId);
         
         if (btnLabel) btnLabel.textContent = 'Submitted';
+<<<<<<< HEAD
         // Persist user data to session
+=======
+        // Persist user data to session and redirect to events selection page
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         try {
           sessionStorage.setItem('lastToken', shortId);
           sessionStorage.setItem('lastName', payload.username || '');
           sessionStorage.setItem('lastCollege', payload.college || '');
           sessionStorage.setItem('lastCourse', payload.course || '');
         } catch {}
+<<<<<<< HEAD
         
         // After successful registration, always redirect to event selection
         // This ensures users select events before payment
@@ -514,6 +557,13 @@
         setTimeout(() => {
           window.location.href = 'events-list.html';
         }, 1500);
+=======
+        // Optional celebration before redirect
+        playSuccessSound();
+        burstEmojis();
+        // Quick redirect to events selection page (keep loader visible until navigation)
+        window.location.href = 'events-list.html';
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       } catch (err) {
         console.error('Registration error:', err);
         
@@ -553,5 +603,8 @@
   </script>
 </body>
 </html>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4

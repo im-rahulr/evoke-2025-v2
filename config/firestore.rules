@@ -6,7 +6,11 @@ service cloud.firestore {
     match /registrations/{docId} {
       allow read: if true;
       allow create: if
+<<<<<<< HEAD
         request.time < timestamp.date(2025, 11, 21) &&
+=======
+        request.time < timestamp.date(2025, 11, 30) &&
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         request.resource.data.username is string &&
         request.resource.data.username.size() >= 2 &&
         request.resource.data.course in ['10th Class'] &&
@@ -16,7 +20,11 @@ service cloud.firestore {
         request.resource.data.phone.matches('^\\d{10,15}$') &&
         request.resource.data.shortId is string &&
         request.resource.data.shortId.matches('^\\d{3}$') &&
+<<<<<<< HEAD
         request.resource.data.ip is string &&
+=======
+        (request.resource.data.ip == null || request.resource.data.ip is string) &&
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         request.resource.data.keys().hasOnly(['username','course','college','phone','ip','shortId','createdAt','hasSelectedEvents','eventSelectionId']);
 
       /* allow updating payment, RSVP, event selection and soft-delete fields (validate only changed keys) */
@@ -26,7 +34,10 @@ service cloud.firestore {
           'paymentMode','paymentAt','rsvpDownloaded','rsvpDownloadedAt','adminGenerated','paymentUpdatedAt','paymentUpdatedBy',
           'hasSelectedEvents','eventSelectionId','eventSelections','totalAmount','eventCount','eventSelectionTimestamp',
           'paymentApproved','paymentApprovedAt','paymentApprovedBy','paymentType','transactionId','receiptNo',
+<<<<<<< HEAD
           'paymentConfirmed','paymentConfirmedAt','paymentConfirmedBy',
+=======
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
           'deleted','deletedAt','deletedReason','restoredAt'
         ]) &&
         // Validate only if the field is being changed
@@ -54,6 +65,7 @@ service cloud.firestore {
           (!request.resource.data.diff(resource.data).changedKeys().hasAny(['receiptNo'])) ||
           (request.resource.data.receiptNo is string)
         ) &&
+<<<<<<< HEAD
         // Payment confirmation field validations
         (
           (!request.resource.data.diff(resource.data).changedKeys().hasAny(['paymentConfirmed'])) ||
@@ -63,6 +75,8 @@ service cloud.firestore {
           (!request.resource.data.diff(resource.data).changedKeys().hasAny(['paymentConfirmedBy'])) ||
           (request.resource.data.paymentConfirmedBy is string)
         ) &&
+=======
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         // Soft-delete field validations (only when provided)
         (
           (!request.resource.data.diff(resource.data).changedKeys().hasAny(['deleted'])) ||

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/main.css?v=20251030">
   <style>
+<<<<<<< HEAD
     /* Black Glass Background Effect */
     body {
       background-image: url('../assets/images/backgrounds/background.png');
@@ -33,32 +37,51 @@
       z-index: -1;
     }
     
+=======
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .events-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 8px;
       margin: 16px 0;
+<<<<<<< HEAD
       padding-bottom: 32px;
       /* Default spacing; extra space only when summary is visible */
     }
 
+=======
+      padding-bottom: 32px; /* Default spacing; extra space only when summary is visible */
+    }
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     @media (min-width: 768px) {
       .events-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
       }
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     @media (min-width: 1024px) {
       .events-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 12px;
       }
     }
+<<<<<<< HEAD
 
     .event-card {
       background: rgba(0, 0, 0, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.12);
+=======
+    
+    .event-card {
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       border-radius: 12px;
       padding: 14px;
       transition: all 0.3s ease;
@@ -67,6 +90,7 @@
       justify-content: space-between;
       align-items: center;
       min-height: 60px;
+<<<<<<< HEAD
       backdrop-filter: blur(52px);
       -webkit-backdrop-filter: blur(8px);
       box-shadow: 0 10px 30px rgba(105, 88, 88, 0.35);
@@ -78,15 +102,33 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
+=======
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+    
+    .event-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .event-card.selected {
       border-color: var(--primary);
       background: rgba(123, 191, 68, 0.05);
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .event-card .event-content {
       flex: 1;
       margin-right: 12px;
     }
+<<<<<<< HEAD
 
     .event-card .event-title {
       font-size: 14px;
@@ -105,10 +147,29 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
     }
 
+=======
+    
+    .event-card .event-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
+    
+    .event-card .event-description {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.3;
+      margin-bottom: 0;
+    }
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .event-card .event-actions {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+<<<<<<< HEAD
       gap: 8px;
     }
 
@@ -201,18 +262,96 @@
 
 
 
+=======
+      gap: 6px;
+    }
+    
+    .event-price-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: var(--primary);
+      color: #10210a;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .select-btn {
+      padding: 6px 12px;
+      border: 1px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 11px;
+      transition: all 0.3s ease;
+      min-width: 65px;
+      text-align: center;
+    }
+    
+    .select-btn:hover {
+      background: var(--primary);
+      color: #10210a;
+    }
+    
+    .select-btn.selected {
+      background: var(--primary);
+      color: #10210a;
+    }
+    
+    .team-controls {
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .team-controls.show { display: flex; }
+
+    .team-btn {
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,0.2);
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .team-size {
+      min-width: 22px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 12px;
+    }
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .selection-summary {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
+<<<<<<< HEAD
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.15);
+=======
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       border-radius: 12px 12px 0 0;
       padding: 16px;
       margin: 0;
       display: none;
       z-index: 1000;
+<<<<<<< HEAD
       box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5);
       max-height: 50vh;
       overflow-y: auto;
@@ -225,20 +364,39 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
     }
 
+=======
+      box-shadow: 0 -8px 30px rgba(0,0,0,0.35);
+      max-height: 50vh;
+      overflow-y: auto;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .summary-totals {
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       margin-top: 12px;
       padding-top: 12px;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .summary-row {
       display: flex;
       justify-content: space-between;
       padding: 6px 0;
       font-size: 14px;
+<<<<<<< HEAD
       color: rgba(255, 255, 255, 0.9);
     }
 
+=======
+      color: var(--text);
+    }
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .summary-row.total {
       font-size: 18px;
       font-weight: 700;
@@ -247,17 +405,26 @@
       margin-top: 8px;
       padding-top: 8px;
     }
+<<<<<<< HEAD
 
     .selection-summary.show {
       display: block;
     }
 
+=======
+    
+    .selection-summary.show {
+      display: block;
+    }
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .summary-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 6px 0;
       font-size: 14px;
+<<<<<<< HEAD
       color: rgba(255, 255, 255, 0.9);
     }
     
@@ -266,6 +433,10 @@
       transform: scale(1.2);
     }
 
+=======
+    }
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .user-info {
       background: rgba(0, 0, 0, 0.1);
       border: 1px solid var(--primary);
@@ -274,32 +445,49 @@
       margin-bottom: 16px;
       display: inline-block;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .user-info h3 {
       margin: 0 0 4px 0;
       color: var(--primary);
       font-size: 14px;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .user-info p {
       margin: 2px 0;
       font-size: 12px;
       display: inline;
       margin-right: 12px;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     .user-info-content {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       align-items: center;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     /* Mobile optimizations */
     @media (max-width: 767px) {
       .container {
         padding: 0 12px;
       }
+<<<<<<< HEAD
 
       .events-grid {
         gap: 10px;
@@ -366,21 +554,64 @@
         min-width: 35px;
       }
 
+=======
+      
+      .events-grid {
+        gap: 6px;
+        margin: 12px 0;
+        padding-bottom: 220px;
+      }
+      
+      .event-card {
+        padding: 10px;
+        min-height: 55px;
+      }
+      
+      .event-card .event-title {
+        font-size: 13px;
+      }
+      
+      .event-card .event-description {
+        font-size: 10px;
+      }
+      
+      .select-btn {
+        padding: 5px 10px;
+        font-size: 10px;
+        min-width: 60px;
+      }
+      
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       .user-info {
         padding: 6px 8px;
         margin-bottom: 10px;
       }
+<<<<<<< HEAD
 
       .user-info h3 {
         font-size: 12px;
       }
 
+=======
+      
+      .user-info h3 {
+        font-size: 12px;
+      }
+      
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       .user-info p {
         font-size: 10px;
         margin-right: 6px;
       }
+<<<<<<< HEAD
     }
 
+=======
+      
+
+    }
+    
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     /* Desktop optimizations */
     @media (min-width: 1200px) {
       .events-grid {
@@ -401,20 +632,50 @@
     }
   </style>
 </head>
+<<<<<<< HEAD
 
 <body class="home-page">
   <main class="container" role="main">
+=======
+<body class="home-page">
+  <main class="container" role="main">
+    <nav aria-label="Progress" style="margin: 6px 0 8px 0;">
+      <div style="display:flex; gap:8px; align-items:center; font-size:12px; color:var(--muted);">
+        <span style="font-weight:700; color:var(--primary)">1</span>
+        <span>Event Selection</span>
+        <span>›</span>
+        <span style="opacity:.75">2 Team Composition</span>
+        <span>›</span>
+        <span style="opacity:.75">3 Details</span>
+      </div>
+    </nav>
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     <header class="event-header">
       <div class="event-info">
         <div class="event-breadcrumb">
           <a href="../index.html">EVOKE 2K25</a> <span>/</span> <span>Select Events</span>
         </div>
         <h1 class="event-title">Choose Your Events</h1>
+<<<<<<< HEAD
         <p class="event-subtitle">Select events and specify number of participants (₹100 per event pre-register<br>₹150 on-spot)</p>
       </div>
     </header>
 
 
+=======
+        <p class="event-subtitle">Select the events you want to participate in (₹100 per event pre-register / ₹150 on-spot)</p>
+      </div>
+    </header>
+
+    <div id="userInfo" class="user-info" style="display: none;">
+      <h3>Registration Details</h3>
+      <div class="user-info-content">
+        <p><strong>Name:</strong> <span id="userName"></span></p>
+        <p><strong>Token:</strong> <span id="userToken"></span></p>
+        <p><strong>College:</strong> <span id="userCollege"></span></p>
+      </div>
+    </div>
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 
     <div class="events-grid" id="eventsGrid">
       <!-- Events will be loaded here -->
@@ -433,6 +694,7 @@
           <span id="totalAmount">₹0</span>
         </div>
       </div>
+<<<<<<< HEAD
       <div style="display: flex; gap: 12px; margin-top: 16px;">
         <button class="btn btn-secondary btn-block" id="clearSelections" style="flex: 1;">
           Clear All
@@ -445,6 +707,15 @@
 
     <div style="text-align: center; margin-top: 24px;">
       <a href="../index.html" class="login-link" style="font-size: 14px;">← Back to Home</a>
+=======
+      <button class="btn btn-primary btn-block" id="proceedToDetails" style="margin-top: 16px;">
+        Continue to Details
+      </button>
+    </div>
+    
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="register.html" class="login-link" style="font-size: 14px;">← Back to Registration</a>
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     </div>
   </main>
 
@@ -458,6 +729,7 @@
     import { db } from '../assets/js/firebase-config.js';
     import { collection, doc, setDoc, updateDoc, getDoc, getDocs, query, where, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
+<<<<<<< HEAD
     // Event data with participant limits
     const EVENTS_DATA = [
       {
@@ -574,6 +846,141 @@
       }
     ];
 
+=======
+    // Event data
+    const EVENTS_DATA = [
+      {
+        id: 'dumb-charades',
+        title: 'Dumb Charades',
+        description: 'Team of 2. Act without speaking; 1 minute per word. 10 prompts, need 8 correct to qualify.',
+        minParticipants: 2,
+        maxParticipants: 2,
+        capacity: 100
+      },
+      {
+        id: 'general-quiz',
+        title: 'G.K. Quiz',
+        description: 'Two per team. Prelims written; finals oral. Includes Aptitude, Current Affairs, Sports, Science and more.',
+        minParticipants: 2,
+        maxParticipants: 2,
+        capacity: 100
+      },
+      {
+        id: 'fashion-show',
+        title: 'Fashion Show (Indian Culture)',
+        description: 'Individual. Modest attire, props allowed. 30s on stage.',
+        minParticipants: 1,
+        maxParticipants: 1,
+        capacity: 100
+      },
+      {
+        id: 'group-song',
+        title: 'Group Song',
+        description: '3–5 members. Max 4 mins. Any language; judged on vocals, musicality, presence and style.',
+        minParticipants: 3,
+        maxParticipants: 5,
+        capacity: 40
+      },
+      {
+        id: 'solo-singing',
+        title: 'Solo Song',
+        description: 'Individual. Max 2 mins. Any language; decent content. Own track/karaoke allowed.',
+        minParticipants: 1,
+        maxParticipants: 1,
+        capacity: 200
+      },
+      {
+        id: 'group-dance',
+        title: 'Group Dance',
+        description: '2–5 members. Theme: Cinematic. 3+1 mins; fusion allowed; no religious acts.',
+        minParticipants: 2,
+        maxParticipants: 5,
+        capacity: 40
+      },
+      {
+        id: 'solo-dance',
+        title: 'Solo Dance',
+        description: 'Individual. 4 mins. Free Style. Fusion allowed. No religious acts; decent performance.',
+        minParticipants: 1,
+        maxParticipants: 1,
+        capacity: 200
+      },
+      {
+        id: 'solo-instrumental',
+        title: 'Instrumental Music',
+        description: 'Individual. Bring your own instruments. Time limit 3 minutes.',
+        minParticipants: 1,
+        maxParticipants: 1,
+        capacity: 100
+      },
+      {
+        id: 'face-painting',
+        title: 'Face Painting',
+        description: 'Team of 2 (one paints on the other). Time limit 1 hour. Free Theme.',
+        minParticipants: 2,
+        maxParticipants: 2,
+        capacity: 60
+      },
+      {
+        id: 'fireless-cooking',
+        title: 'Cooking Without Fire',
+        description: 'Individual. 1½ hours. No fire; own utensils; no precooked items; creativity judged.',
+        minParticipants: 1,
+        maxParticipants: 1,
+        capacity: 80
+      },
+      {
+        id: 'vegetable-carving',
+        title: 'Vegetable Carving',
+        description: 'Individual. 1 hour. Bring own veggies and tools; follow given theme.',
+        minParticipants: 1,
+        maxParticipants: 1,
+        capacity: 80
+      },
+      {
+        id: 'pot-painting',
+        title: 'Pot Painting',
+        description: 'Pot provided. 1 hour. Only hand painting; bring materials; no spray paint.',
+        minParticipants: 1,
+        maxParticipants: 1,
+        capacity: 80
+      },
+      {
+        id: 'art-craft',
+        title: 'Art and Craft',
+        description: 'Individual. Bring own materials and tools. Time: 1 hour. Original work only.',
+        minParticipants: 1,
+        maxParticipants: 1,
+        capacity: 120
+      },
+      {
+        id: 'collage-competition',
+        title: 'Collage Competition',
+        description: 'Team of ≥2. Theme on the spot. Time 1 hour. Charts provided. Handmade only.',
+        minParticipants: 2,
+        maxParticipants: 4,
+        capacity: 100
+      },
+      {
+        id: 'pencil-sketch',
+        title: 'Pencil Sketch',
+        description: 'Individual. Theme on the spot. Papers provided. Graphite/charcoal only.',
+        minParticipants: 1,
+        maxParticipants: 1,
+        capacity: 150
+      },
+      {
+        id: 'best-waste',
+        title: 'Best Out of Waste',
+        description: 'Individual. 1½ hours. Only waste/recyclable materials; eco-friendly models.',
+        minParticipants: 1,
+        maxParticipants: 1,
+        capacity: 120
+      }
+    ];
+
+    // selectedEvents: { [eventId]: { teamSize: number } }
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     let selectedEvents = {};
     let userContext = null;
 
@@ -581,7 +988,11 @@
     const eventsGrid = document.getElementById('eventsGrid');
     const selectionSummary = document.getElementById('selectionSummary');
     const summaryItems = document.getElementById('summaryItems');
+<<<<<<< HEAD
     const proceedBtn = document.getElementById('proceedToPayment');
+=======
+    const proceedBtn = document.getElementById('proceedToDetails');
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
     const pageLoader = document.getElementById('pageLoader');
     const userInfo = document.getElementById('userInfo');
 
@@ -600,7 +1011,11 @@
         const token = sessionStorage.getItem('lastToken');
         const name = sessionStorage.getItem('lastName');
         const college = sessionStorage.getItem('lastCollege');
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         if (token && name) {
           return { token, name, college: college || 'N/A' };
         }
@@ -630,29 +1045,50 @@
     // Display user information
     function displayUserInfo() {
       userContext = getUserContext();
+<<<<<<< HEAD
       if (!userContext) {
         // No user context - this is first time, allow them to proceed
         console.log('No user context found - new user flow');
+=======
+      if (userContext) {
+        document.getElementById('userName').textContent = userContext.name;
+        document.getElementById('userToken').textContent = userContext.token;
+        document.getElementById('userCollege').textContent = userContext.college;
+        userInfo.style.display = 'block';
+      } else {
+        // Redirect to registration if no user context
+        alert('Please complete registration first.');
+        window.location.href = 'register.html';
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       }
     }
 
     // Render events grid
     function renderEvents() {
       eventsGrid.innerHTML = '';
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       EVENTS_DATA.forEach(event => {
         const eventCard = document.createElement('div');
         eventCard.className = 'event-card';
         eventCard.dataset.eventId = event.id;
+<<<<<<< HEAD
 
         const participantInfo = event.minParticipants === event.maxParticipants
           ? `${event.maxParticipants} member${event.maxParticipants > 1 ? 's' : ''}`
           : `${event.minParticipants}-${event.maxParticipants} members`;
 
+=======
+        
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         eventCard.innerHTML = `
           <div class="event-price-badge">₹100</div>
           <div class="event-content">
             <div class="event-title">${event.title}</div>
+<<<<<<< HEAD
             <div class="event-description">${event.description} (${participantInfo})</div>
           </div>
           <div class="event-actions">
@@ -665,6 +1101,20 @@
           </div>
         `;
 
+=======
+            <div class="event-description">${event.description} • Team ${event.minParticipants === event.maxParticipants ? event.maxParticipants : `${event.minParticipants}–${event.maxParticipants}`}</div>
+          </div>
+          <div class="event-actions">
+            <button class="select-btn" data-event-id="${event.id}">Select</button>
+            <div class="team-controls" id="tc-${event.id}" aria-live="polite">
+              <button class="team-btn" data-op="-" data-event-id="${event.id}" aria-label="Decrease team size">−</button>
+              <span class="team-size" id="ts-${event.id}">${event.minParticipants || 1}</span>
+              <button class="team-btn" data-op="+" data-event-id="${event.id}" aria-label="Increase team size">+</button>
+            </div>
+          </div>
+        `;
+        
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         // Add select button handler
         const selectBtn = eventCard.querySelector('.select-btn');
         selectBtn.addEventListener('click', (e) => {
@@ -672,6 +1122,7 @@
           toggleEventSelection(event.id);
         });
 
+<<<<<<< HEAD
         // Add participant control handlers
         const participantControls = eventCard.querySelector('.participant-controls');
         const minusBtn = participantControls.querySelector('.minus');
@@ -688,6 +1139,14 @@
           updateParticipantCount(event.id, 1);
         });
 
+=======
+        // Add team control handlers
+        const decBtn = eventCard.querySelector(`.team-btn[data-op="-"][data-event-id="${event.id}"]`);
+        const incBtn = eventCard.querySelector(`.team-btn[data-op="+"][data-event-id="${event.id}"]`);
+        decBtn.addEventListener('click', (e) => { e.stopPropagation(); adjustTeam(event.id, -1); });
+        incBtn.addEventListener('click', (e) => { e.stopPropagation(); adjustTeam(event.id, +1); });
+        
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         eventsGrid.appendChild(eventCard);
       });
     }
@@ -695,17 +1154,26 @@
     // Toggle event selection
     function toggleEventSelection(eventId) {
       console.log('Toggling event:', eventId);
+<<<<<<< HEAD
       const event = EVENTS_DATA.find(e => e.id === eventId);
       const eventCard = document.querySelector(`.event-card[data-event-id="${eventId}"]`);
       const selectBtn = eventCard.querySelector('.select-btn');
       const participantControls = eventCard.querySelector('.participant-controls');
 
+=======
+      const eventCard = document.querySelector(`[data-event-id="${eventId}"]`);
+      const selectBtn = eventCard.querySelector('.select-btn');
+      const teamControls = document.getElementById(`tc-${eventId}`);
+      const eventMeta = EVENTS_DATA.find(e => e.id === eventId);
+      
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       if (selectedEvents[eventId]) {
         // Deselect event
         delete selectedEvents[eventId];
         eventCard.classList.remove('selected');
         selectBtn.classList.remove('selected');
         selectBtn.textContent = 'Select';
+<<<<<<< HEAD
         participantControls.classList.remove('show');
       } else {
         // Select event with minimum participants
@@ -723,10 +1191,26 @@
         updateParticipantButtons(eventId);
       }
 
+=======
+        teamControls?.classList.remove('show');
+      } else {
+        // Select event with default quantity of 1
+        const defaultTeam = Math.max(1, eventMeta?.minParticipants || 1);
+        selectedEvents[eventId] = { teamSize: defaultTeam };
+        eventCard.classList.add('selected');
+        selectBtn.classList.add('selected');
+        selectBtn.textContent = 'Unselect';
+        teamControls?.classList.add('show');
+        const ts = document.getElementById(`ts-${eventId}`);
+        if (ts) ts.textContent = String(defaultTeam);
+      }
+      
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       console.log('Current selected events:', selectedEvents);
       updateSelectionSummary();
     }
 
+<<<<<<< HEAD
     // Update participant count
     function updateParticipantCount(eventId, delta) {
       const event = EVENTS_DATA.find(e => e.id === eventId);
@@ -826,6 +1310,90 @@
       console.log('Submit button clicked!');
       console.log('Selected events:', selectedEvents);
 
+=======
+    function adjustTeam(eventId, delta) {
+      const meta = EVENTS_DATA.find(e => e.id === eventId);
+      if (!meta || !selectedEvents[eventId]) return;
+      const min = meta.minParticipants || 1;
+      const max = meta.maxParticipants || 1;
+      const next = Math.max(min, Math.min(max, (selectedEvents[eventId].teamSize || min) + delta));
+      if (next === selectedEvents[eventId].teamSize) {
+        if (delta > 0) alert(`Max team size reached (${max}).`);
+        if (delta < 0) alert(`Min team size is ${min}.`);
+        return;
+      }
+      selectedEvents[eventId].teamSize = next;
+      const ts = document.getElementById(`ts-${eventId}`);
+      if (ts) ts.textContent = String(next);
+      updateSelectionSummary();
+    }
+
+    // Update selection summary
+    function updateSelectionSummary() {
+      const hasSelections = Object.keys(selectedEvents).length > 0;
+      
+      if (hasSelections) {
+        selectionSummary.classList.add('show');
+        document.body.classList.add('has-summary');
+        
+        let summaryHTML = '';
+        
+        Object.entries(selectedEvents).forEach(([eventId, data]) => {
+          const event = EVENTS_DATA.find(e => e.id === eventId);
+          
+          summaryHTML += `
+            <div class="summary-item">
+              <span>${event.title}</span>
+              <span>
+                <button class="team-btn" onclick="return false" data-sum-dec="${event.id}">−</button>
+                <strong style="margin:0 6px;">${data.teamSize}</strong>
+                <button class="team-btn" onclick="return false" data-sum-inc="${event.id}">+</button>
+              </span>
+            </div>
+          `;
+        });
+        
+        summaryItems.innerHTML = summaryHTML;
+        // Wire summary +/- buttons
+        summaryItems.querySelectorAll('[data-sum-dec]').forEach(btn => btn.addEventListener('click', (e)=>{
+          const id = e.currentTarget.getAttribute('data-sum-dec');
+          adjustTeam(id, -1);
+        }));
+        summaryItems.querySelectorAll('[data-sum-inc]').forEach(btn => btn.addEventListener('click', (e)=>{
+          const id = e.currentTarget.getAttribute('data-sum-inc');
+          adjustTeam(id, +1);
+        }));
+        
+        // Calculate event count and total amount
+        const eventCount = Object.keys(selectedEvents).length;
+        const totalAmount = eventCount * 100;
+        
+        // Update DOM elements
+        document.getElementById('eventCount').textContent = eventCount;
+        document.getElementById('totalAmount').textContent = `₹${totalAmount}`;
+        
+        // Store in sessionStorage
+        sessionStorage.setItem('eventCount', String(eventCount));
+        sessionStorage.setItem('totalAmount', String(totalAmount));
+        sessionStorage.setItem('selectedEvents', JSON.stringify(selectedEvents));
+        
+      } else {
+        selectionSummary.classList.remove('show');
+        document.body.classList.remove('has-summary');
+        
+        // Reset values when no events selected
+        sessionStorage.setItem('eventCount', '0');
+        sessionStorage.setItem('totalAmount', '0');
+        sessionStorage.removeItem('selectedEvents');
+      }
+    }
+
+    // Proceed to details
+    async function proceedToDetails() {
+      console.log('Submit button clicked!');
+      console.log('Selected events:', selectedEvents);
+      
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       if (Object.keys(selectedEvents).length === 0) {
         console.warn('No events selected');
         alert('Please select at least one event.');
@@ -833,6 +1401,7 @@
       }
 
       if (!userContext) {
+<<<<<<< HEAD
         console.log('No user context - storing selections and redirecting to registration');
         // Store selections for after registration
         sessionStorage.setItem('pendingEventSelections', JSON.stringify(selectedEvents));
@@ -840,6 +1409,10 @@
         sessionStorage.setItem('totalAmount', String(Object.keys(selectedEvents).length * 100));
 
         // Redirect to registration - user will come back here after registering
+=======
+        console.warn('No user context found');
+        alert('User session expired. Please register again.');
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         window.location.href = 'register.html';
         return;
       }
@@ -848,6 +1421,7 @@
       showLoader('Saving your event selections...');
 
       try {
+<<<<<<< HEAD
         // Prepare event selections with participant counts
         const eventSelections = [];
 
@@ -860,6 +1434,21 @@
             participantCount,
             minParticipants: event.minParticipants,
             maxParticipants: event.maxParticipants
+=======
+        // Prepare event selections without pricing
+        const eventSelections = [];
+
+        Object.entries(selectedEvents).forEach(([eventId, data]) => {
+          const event = EVENTS_DATA.find(e => e.id === eventId);
+          
+          eventSelections.push({
+            eventId,
+            eventTitle: event.title,
+            teamSize: data.teamSize,
+            minParticipants: event.minParticipants,
+            maxParticipants: event.maxParticipants,
+            capacity: event.capacity
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
           });
         });
 
@@ -883,7 +1472,11 @@
         const totalAmount = eventCount * 100;
         console.log('Event count:', eventCount);
         console.log('Total amount calculated:', totalAmount);
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         // Ensure sessionStorage has the latest values
         sessionStorage.setItem('eventCount', String(eventCount));
         sessionStorage.setItem('totalAmount', String(totalAmount));
@@ -906,7 +1499,11 @@
 
         // Best-effort: link selection to registration (ignore if denied by rules)
         try {
+<<<<<<< HEAD
           console.log('Attempting to update registration document with event selection metadata');
+=======
+          console.log('Attempting to update registration document');
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
           await updateDoc(userDocData.ref, {
             hasSelectedEvents: true,
             eventSelectionId: selectionDocRef.id,
@@ -914,6 +1511,7 @@
             eventCount: eventCount,
             totalAmount: totalAmount
           });
+<<<<<<< HEAD
           console.log('Registration document updated successfully with event metadata');
         } catch (linkErr) {
           console.warn('Could not update registration document (this is okay, event data is saved in eventSelections collection):', linkErr?.message || linkErr);
@@ -922,6 +1520,14 @@
         }
 
         // Store selections in session storage for payment page
+=======
+          console.log('Registration document updated successfully');
+        } catch (linkErr) {
+          console.warn('Linking selection to registration was skipped due to rules:', linkErr?.message || linkErr);
+        }
+
+        // Store selections in session storage for next step
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         sessionStorage.setItem('eventSelections', JSON.stringify(eventSelections));
         sessionStorage.setItem('totalAmount', String(totalAmount));
         sessionStorage.setItem('payment_user_context', JSON.stringify({
@@ -939,9 +1545,15 @@
           sessionStorage.setItem('events_submitted_time', String(Date.now()));
         } catch (e) { console.warn('Failed to set submission lock:', e); }
 
+<<<<<<< HEAD
         // Redirect to payment page
         console.log('Redirecting to payment page');
         window.location.href = 'success.html';
+=======
+        // Redirect to details page
+        console.log('Redirecting to details page');
+        window.location.href = 'participant-details.html';
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 
       } catch (error) {
         console.error('Error saving event selections:', {
@@ -957,12 +1569,17 @@
     // Initialize page
     function init() {
       console.log('Initializing events page...');
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
       // If already submitted, redirect to success immediately
       if (enforceSubmissionLock()) return;
 
       displayUserInfo();
       renderEvents();
+<<<<<<< HEAD
 
       // Check if there are pending selections from a previous visit
       try {
@@ -1003,10 +1620,18 @@
       if (proceedBtn) {
         console.log('Submit button found, adding click handler');
         proceedBtn.addEventListener('click', proceedToPayment);
+=======
+      
+      // Add proceed button handler
+      if (proceedBtn) {
+        console.log('Submit button found, adding click handler');
+        proceedBtn.addEventListener('click', proceedToDetails);
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
         console.log('Click handler attached successfully');
       } else {
         console.error('Submit button not found!');
       }
+<<<<<<< HEAD
       
       // Add clear all button handler
       const clearBtn = document.getElementById('clearSelections');
@@ -1041,6 +1666,8 @@
           }
         });
       }
+=======
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 
       // Handle back-forward cache returns: re-check lock and redirect if needed
       window.addEventListener('pageshow', () => {
@@ -1065,6 +1692,10 @@
     }
   </script>
 </body>
+<<<<<<< HEAD
 
 </html>
 
+=======
+</html>
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4

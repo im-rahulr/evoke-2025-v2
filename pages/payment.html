@@ -1040,6 +1040,7 @@ Please confirm my payment status.`;
       // Check if user has valid context
       const userContext = getUserContext();
       if (!userContext) {
+<<<<<<< HEAD
         alert('Please register first to get your token number.');
         window.location.href = 'register.html';
         return;
@@ -1054,6 +1055,12 @@ Please confirm my payment status.`;
         window.location.href = 'events-list.html';
         return;
       }
+=======
+        alert('Please complete registration and event selection first.');
+        window.location.href = 'register.html';
+        return;
+      }
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 
       // Non-blocking IP fetch and store for analytics/support
       (async () => {
@@ -1605,5 +1612,8 @@ Please help me resolve this issue.`;
 </body>
 
 </html>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4

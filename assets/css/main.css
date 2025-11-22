@@ -238,40 +238,65 @@ body.with-banner .container {
   transition: transform .05s ease, filter .2s ease, background .2s ease, box-shadow .2s ease;
   border: none;
   cursor: pointer;
+<<<<<<< HEAD
   box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+=======
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 }
 
 .btn:hover {
   filter: brightness(1.05);
+<<<<<<< HEAD
   box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+=======
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 }
 
 .btn:active {
   transform: translateY(1px);
+<<<<<<< HEAD
   box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+=======
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 }
 
 .btn-primary {
   background: var(--primary);
   color: #fff;
   border: 1px solid var(--primary-dark);
+<<<<<<< HEAD
   box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+=======
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.25), inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 }
 
 .btn-primary:hover {
   filter: none;
   background: var(--primary-dark);
+<<<<<<< HEAD
   box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.35);
 }
 
 .btn-primary:active {
   box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.3);
+=======
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.35), inset 0 -2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.btn-primary:active {
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25), inset 0 -1px 2px rgba(0, 0, 0, 0.3);
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 }
 
 .btn-secondary {
   background: var(--line);
   color: var(--text);
   border: 1px solid var(--surface);
+<<<<<<< HEAD
   box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -281,6 +306,17 @@ body.with-banner .container {
 
 .btn-secondary:active {
   box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+=======
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn-secondary:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+>>>>>>> 19d0a708fe004e1650bebad7a1a8f14eba6a6ed4
 }
 
 .btn-block {
