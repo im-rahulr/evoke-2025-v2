@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection Error</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .error-container {
+            background-color: #000000;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .error-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background-color: #ff4444;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: white;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #cccccc;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .connection-status {
+            margin-bottom: 30px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            margin: 8px 0;
+            background-color: #1a1a1a;
+            border-radius: 4px;
+        }
+
+        .status-label {
+            color: #cccccc;
+            font-size: 14px;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .led {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .led.working {
+            background-color: #4CAF50;
+            animation: pulse-green 2s infinite;
+        }
+
+        .led.not-working {
+            background-color: #ff4444;
+            animation: pulse-red 1s infinite;
+        }
+
+        @keyframes pulse-green {
+            0%, 100% {
+                box-shadow: 0 0 5px #4CAF50;
+                opacity: 1;
+            }
+            50% {
+                box-shadow: 0 0 15px #4CAF50, 0 0 20px #4CAF50;
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes pulse-red {
+            0%, 100% {
+                box-shadow: 0 0 5px #ff4444;
+                opacity: 1;
+            }
+            50% {
+                box-shadow: 0 0 15px #ff4444, 0 0 20px #ff4444;
+                opacity: 0.6;
+            }
+        }
+
+        .status-text {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .status-text.working {
+            color: #4CAF50;
+        }
+
+        .status-text.not-working {
+            color: #ff4444;
+        }
+
+        .error-id {
+            color: #888;
+            font-size: 12px;
+            margin-top: 20px;
+            font-family: monospace;
+        }
+
+        .outage-time {
+            color: #ff4444;
+            font-size: 14px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="logo">EVOKE</div> -->
+    
+    <div class="error-container">
+        <div class="error-icon">✕</div>
+        <h1>Something Went Wrong with Evoke</h1>
+        <p>We're experiencing technical difficulties.</p>
+        <div class="connection-status">
+            <div class="status-item">
+                <span class="status-label">Your Browser</span>
+                <div class="status-indicator">
+                    <div class="led working"></div>
+                    <span class="status-text working">Working</span>
+                </div>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Cloudflare</span>
+                <div class="status-indicator">
+                    <div class="led not-working"></div>
+                    <span class="status-text not-working">Not Working</span>
+                </div>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Google Server</span>
+                <div class="status-indicator">
+                    <div class="led working"></div>
+                    <span class="status-text working">Working</span>
+                </div>
+            </div>
+        </div>
+        <div class="error-id" id="errorId"></div>
+        <div class="outage-time" id="outageTime"></div>
+    </div>
+
+    <div class="footer">Designed by CodeCraft</div>
+
+    <script>
+        function generateErrorId() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let errorId = 'ERR-';
+            for (let i = 0; i < 8; i++) {
+                errorId += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return errorId;
+        }
+
+        function calculateOutageTime() {
+            const outageStart = new Date('2025-11-18T18:00:00');
+            const now = new Date();
+            const diffMs = now - outageStart;
+            
+            if (diffMs < 0) {
+                return 'Calculating...';
+            }
+            
+            const totalMinutes = Math.floor(diffMs / 60000);
+            const hours = Math.floor(totalMinutes / 60);
+            const minutes = totalMinutes % 60;
+            
+            if (hours > 0) {
+                return hours + ' hour' + (hours !== 1 ? 's' : '') + ' ' + minutes + ' minute' + (minutes !== 1 ? 's' : '');
+            } else {
+                return totalMinutes + ' minute' + (totalMinutes !== 1 ? 's' : '');
+            }
+        }
+
+        window.addEventListener('load', function() {
+            const errorIdElement = document.getElementById('errorId');
+            const outageTimeElement = document.getElementById('outageTime');
+            
+            errorIdElement.textContent = 'Error ID: ' + generateErrorId();
+            
+            function updateOutageTime() {
+                const timeStr = calculateOutageTime();
+                outageTimeElement.textContent = 'Outage Duration: ' + timeStr;
+            }
+            
+            updateOutageTime();
+            setInterval(updateOutageTime, 60000);
+        });
+    </script>
+</body>
+</html>
